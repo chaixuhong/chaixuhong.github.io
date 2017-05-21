@@ -158,6 +158,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javacript学习散记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/21/javacript学习散记/">javacript学习散记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/21/javacript学习散记/" class="archive-article-date">
+  	<time datetime="2017-05-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h2><ul>
+<li>99年，ie5部署了XMLHttpRequest接口，从此javascript可以向服务器发送http请求，为ajax的诞生奠定了基础。</li>
+<li>2001年，Json格式诞生，目的是取代XML进行网页与服务器中间的数据交换。</li>
+<li>02年，Mozilla项目发布浏览器的第一版，之后改名为Firefox。</li>
+<li>03年，Safari浏览器诞生。</li>
+<li>05年，ajax（asynchronous javascript and XML）诞生，web2.0时代来临。</li>
+<li>06年，jQuery诞生。</li>
+<li>08年，V8编译器诞生。很大程度的提升了javascript的运行速度和性能。</li>
+<li>09年，NodeJs诞生。标志着javascript可以用于服务器端编程。</li>
+<li>2010年，npm诞生，javascript进入模块化开发的时代。</li>
+<li>12年，单页应用崛起，AngularJs出现。</li>
+<li>13年，Facebook发布了React，引入JSX语法。</li>
+<li>15年6月，ES6正式发布，定名为“ECMAScript 2015 标准”，JS诞生20年。</li>
+<li>2016年6月，《ECMAScript 2016 标准》发布</li>
+</ul>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><ul>
+<li><p>用“var ”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(a);</div><div class="line"><span class="keyword">var</span> a=<span class="number">1</span>;</div><div class="line"><span class="comment">//运行后不会报错，打印出 "undefined"</span></div></pre></td></tr></table></figure>
+<p>其实运行时是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a;</div><div class="line"><span class="built_in">console</span>.log(a);</div><div class="line">a=<span class="number">1</span>;</div></pre></td></tr></table></figure>
+<p>由于变量提升导致的，如果不用“var”的方式声明，则不会出现，且上诉编写的代码无法运行，会报错。</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/21/javacript学习散记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-gulp.js--好用的静态文件打包工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
