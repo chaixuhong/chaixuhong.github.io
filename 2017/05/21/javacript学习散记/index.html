@@ -17,7 +17,7 @@
 <meta property="og:description" content="语法类 用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。  123console.log(b);var b=&quot;hi!&quot;;//运行后不会报错，打印出 &quot;undefined&quot; 其实运行时是这样的： 123var ;console.log(b);b=&quot;hi!&quot;; 由于变量提升导">
 <meta property="og:image" content="http://www.chaixuhong.com/images/js学习散记/base/01.png">
 <meta property="og:image" content="http://www.chaixuhong.com/images/js学习散记/base/02.png">
-<meta property="og:updated_time" content="2017-05-30T17:04:59.000Z">
+<meta property="og:updated_time" content="2017-05-30T17:12:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javacript容易遗漏，也容易被面试官为难的点">
 <meta name="twitter:description" content="语法类 用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。  123console.log(b);var b=&quot;hi!&quot;;//运行后不会报错，打印出 &quot;undefined&quot; 其实运行时是这样的： 123var ;console.log(b);b=&quot;hi!&quot;; 由于变量提升导">
@@ -205,12 +205,12 @@ var _hmt = _hmt || [];
 </ul>
 <p><em>ps:但凡学过一种高级语言的的童鞋都知道，局部变量与全局变量的区别，在js中，区块是无法定义局部变量的，所以以后建议童鞋们，尽量避免相同名称的变量命名，会有意想不到的坑出现……</em></p>
 <blockquote>
-<p><strong>提问1:下面js代码运行时会不会报错？为什么？</strong>  </p>
+<p><strong>问题1:下面js代码运行时会不会报错？为什么？</strong>  </p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</div><div class="line">  <span class="built_in">console</span>.log(tmp);</div><div class="line">&#125;</div><div class="line">   <span class="keyword">var</span> tmp=<span class="string">"hello world!"</span>;</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <blockquote>
-<p><strong>提问2:下面js代码运行时会不会报错？为什么？</strong>  </p>
+<p><strong>问题2:下面js代码运行时会不会报错？为什么？</strong>  </p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</div><div class="line">  tmp=<span class="string">"hello world!"</span>;</div><div class="line">&#125;</div><div class="line">   <span class="built_in">console</span>.log(tmp);</div></pre></td></tr></table></figure>
 <h1 id="数据类型类"><a href="#数据类型类" class="headerlink" title="数据类型类"></a>数据类型类</h1><ul>
@@ -236,7 +236,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><p>布尔值  </p>
 <p>除了以下六个值在自动转换为布尔值时，被认为是false，其他都视为true。    </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> <span class="literal">undefined</span>  </div><div class="line"><span class="number">2.</span> <span class="literal">null</span>  </div><div class="line"><span class="number">3.</span> <span class="string">''</span>  </div><div class="line"><span class="number">4.</span> <span class="string">""</span>  </div><div class="line"><span class="number">5.</span> <span class="literal">NaN</span></div><div class="line"><span class="number">6.</span> <span class="number">0</span></div><div class="line"><span class="number">7.</span> <span class="literal">false</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="literal">undefined</span>  </div><div class="line"><span class="literal">null</span>  </div><div class="line"><span class="string">''</span>  </div><div class="line"><span class="string">""</span>  </div><div class="line"><span class="literal">NaN</span></div><div class="line"><span class="number">0</span></div><div class="line"><span class="literal">false</span></div></pre></td></tr></table></figure>
 <!-- **注意**：空数组([]),空对象({})对应的布尔值是：true  --> 
 </li>
 </ul>
@@ -494,11 +494,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
             
             <div class="clearfix"></div>
