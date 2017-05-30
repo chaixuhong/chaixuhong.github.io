@@ -151,68 +151,6 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-闪电侠第三季第23集终结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/24/闪电侠第三季第23集终结/">闪电侠第三季第23集终结</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/24/闪电侠第三季第23集终结/" class="archive-article-date">
-  	<time datetime="2017-05-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>链接: <a href="http://pan.baidu.com/s/1slPPYOl" target="_blank" rel="external">http://pan.baidu.com/s/1slPPYOl</a> 密码: acfn</p>
-<p>2015-05-25:<br>更新了带字幕的视频文件</p>
-<p>2015-05-24:<br>里面有一个无字幕的720p视频，与字幕文件，大家只需要把字幕拖拽到播放的视频上就可以加载字幕。</p>
-<p>想要最新越狱的可以给我发邮件1684205152@qq.com</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">美剧</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">闪电侠</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
     <article id="post-javacript学习散记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -220,7 +158,7 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/21/javacript学习散记/">javacript学习散记</a>
+      <a class="article-title" href="/2017/05/21/javacript学习散记/">javacript容易遗漏，也容易被面试官为难的点</a>
     </h1>
   
 
@@ -233,21 +171,41 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h1><ul>
-<li>99年，ie5部署了XMLHttpRequest接口，从此javascript可以向服务器发送http请求，为ajax的诞生奠定了基础。</li>
-<li>2001年，Json格式诞生，目的是取代XML进行网页与服务器中间的数据交换。</li>
-<li>02年，Mozilla项目发布浏览器的第一版，之后改名为Firefox。</li>
-<li>03年，Safari浏览器诞生。</li>
-<li>05年，ajax（asynchronous javascript and XML）诞生，web2.0时代来临。</li>
-<li>06年，jQuery诞生。</li>
-<li>08年，V8编译器诞生。很大程度的提升了javascript的运行速度和性能。</li>
-<li>09年，NodeJs诞生。标志着javascript可以用于服务器端编程。</li>
-<li>2010年，npm诞生，javascript进入模块化开发的时代。</li>
-<li>12年，单页应用崛起，AngularJs出现。</li>
-<li>13年，Facebook发布了React，引入JSX语法。</li>
-<li>15年6月，ES6正式发布，定名为“ECMAScript 2015 标准”，JS诞生20年。</li>
-<li>2016年6月，《ECMAScript 2016 标准》发布</li>
+        <!--
+# 历史
+
++ 99年，ie5部署了XMLHttpRequest接口，从此javascript可以向服务器发送http请求，为ajax的诞生奠定了基础。
++ 2001年，Json格式诞生，目的是取代XML进行网页与服务器中间的数据交换。
++ 02年，Mozilla项目发布浏览器的第一版，之后改名为Firefox。
++ 03年，Safari浏览器诞生。
++ 05年，ajax（asynchronous javascript and XML）诞生，web2.0时代来临。
++ 06年，jQuery诞生。
++ 08年，V8编译器诞生。很大程度的提升了javascript的运行速度和性能。
++ 09年，NodeJs诞生。标志着javascript可以用于服务器端编程。
++ 2010年，npm诞生，javascript进入模块化开发的时代。
++ 12年，单页应用崛起，AngularJs出现。
++ 13年，Facebook发布了React，引入JSX语法。
++ 15年6月，ES6正式发布，定名为“ECMAScript 2015 标准”，JS诞生20年。
++ 2016年6月，《ECMAScript 2016 标准》发布
+-->
+<h1 id="语法类"><a href="#语法类" class="headerlink" title="语法类"></a>语法类</h1><ul>
+<li><p>用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。</p>
+<p><img src="/images/js学习散记/base/01.png" style="width:50%;"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(b);</div><div class="line"><span class="keyword">var</span> b=<span class="string">"hi!"</span>;</div><div class="line"><span class="comment">//运行后不会报错，打印出 "undefined"</span></div></pre></td></tr></table></figure>
+<p>其实运行时是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ;</div><div class="line"><span class="built_in">console</span>.log(b);</div><div class="line">b=<span class="string">"hi!"</span>;</div></pre></td></tr></table></figure>
+<p>由于变量提升导致的，如果不用“var”的方式声明，则不会出现，且上诉编写的代码无法运行，会报错。</p>
+</li>
+<li><p>区块不构成单独的作用域，与不使用区块的情况没有任何区别</p>
+<p><img src="/images/js学习散记/base/02.png" style="width:50%;"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  b=<span class="string">"hi!"</span>;<span class="comment">//在区块内定义了一个变量</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(b);<span class="comment">//hi  在外部也能将其打印出来</span></div></pre></td></tr></table></figure>
+</li>
 </ul>
+<p><em>ps:但凡学过一种高级语言的的童鞋都知道，局部变量与全局变量的区别，在js中，区块是无法定义局部变量的，所以以后建议童鞋们，尽量避免相同名称的变量命名，会有意想不到的坑出现……</em></p>
+<blockquote>
+<p><strong>提问1:下面js代码运行时会不会报错？为什么？</strong>  </p>
+</blockquote>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</div><div class="line">  <span class="built_in">console</span>.log(tmp);</div><div class="line">&#125;</div><div class="line">   <span class="keyword">var</span> tmp=<span class="string">"hello world!"</span>;</div></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2017/05/21/javacript学习散记/#more">展开全文 >></a>
         
@@ -353,35 +311,132 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-http解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/24/hello-world/">Hello World</a>
+      <a class="article-title" href="/2017/04/25/http解析/">Http请求头，响应头，错误码解析</a>
     </h1>
   
 
         
-        <a href="/2017/04/24/hello-world/" class="archive-article-date">
-  	<time datetime="2017-04-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-24</time>
+        <a href="/2017/04/25/http解析/" class="archive-article-date">
+  	<time datetime="2017-04-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>HTTP解析：</p>
+<p>1.常见的HTTP请求头</p>
+<table>
+<thead>
+<tr>
+<th>请求头</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><nobr>Accept-charset</nobr></td>
+<td>用于指定客户端接受的字符集</td>
+</tr>
+<tr>
+<td><nobr>Accept-Encoding</nobr></td>
+<td>用于指定可接受的内容编码。如：Accept-Encoding：gzip，deflate</td>
+</tr>
+<tr>
+<td><nobr>Accept-Language</nobr></td>
+<td>用于指定一种自然语言。如：Accept-Language：zh-CN</td>
+</tr>
+<tr>
+<td><nobr>Host</nobr></td>
+<td>用于指定被请求资源的Internet主机和端口号。如：Host：www.taobao.com</td>
+</tr>
+<tr>
+<td><nobr>User-Agent</nobr></td>
+<td>客户端将它的操作系统、浏览器和其他属性告诉服务器。 如：User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36</td>
+</tr>
+<tr>
+<td><nobr>Connection</nobr></td>
+<td>当前连接是否保持。如：Connection：Keep-Alive</td>
+</tr>
+</tbody>
+</table>
+<p>2.常见的HTTP响应头</p>
+<table>
+<thead>
+<tr>
+<th>响应头</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><nobr>Server</nobr></td>
+<td>使用的服务器名称。如：Server：Apache／1.3.6（Unix）</td>
+</tr>
+<tr>
+<td><nobr>Content-Type</nobr></td>
+<td>用来指明发送给接收者的实体正文的媒体类型。如：Content-Type：text/html；charset=utf-8</td>
+</tr>
+<tr>
+<td><nobr>Content-Encoding</nobr></td>
+<td>与请求头Accept-Encoding对应，告诉浏览器服务端采用的是什么压缩编码</td>
+</tr>
+<tr>
+<td><nobr>Content-Language</nobr></td>
+<td>描述了资源所用的自然语言，与Accept-Language对应</td>
+</tr>
+<tr>
+<td><nobr>Content-Length</nobr></td>
+<td>指明实体正文的长度，用以字节方式存储的十进制数字来表示</td>
+</tr>
+<tr>
+<td><nobr>Keep-Live</nobr></td>
+<td>保持连接时间。如：Keep-Live：timeout=5，max=120</td>
+</tr>
+</tbody>
+</table>
+<p>3.常见的HTTP状态码</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>客户端请求成功</td>
+</tr>
+<tr>
+<td>302</td>
+<td>临时跳转，跳转的地址通过Location指定</td>
+</tr>
+<tr>
+<td>400</td>
+<td>客户端请求有语法错误，不能被服务器识别</td>
+</tr>
+<tr>
+<td>403</td>
+<td>服务器收到请求，但拒绝提供服务</td>
+</tr>
+<tr>
+<td>404</td>
+<td>请求的资源不存在</td>
+</tr>
+<tr>
+<td>500</td>
+<td>服务器发生了不可预期的错误</td>
+</tr>
+</tbody>
+</table>
 
       
 
@@ -395,7 +450,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HEXO</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
         		</li>
       		
 		</ul>
@@ -512,19 +567,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HEXO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">美剧</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">闪电侠</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
             
             <div class="clearfix"></div>

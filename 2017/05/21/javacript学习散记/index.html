@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.chaixuhong.com">
-  <title>javacript学习散记 | 柴子博客</title>
+  <title>javacript容易遗漏，也容易被面试官为难的点 | 柴子博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="历史 99年，ie5部署了XMLHttpRequest接口，从此javascript可以向服务器发送http请求，为ajax的诞生奠定了基础。 2001年，Json格式诞生，目的是取代XML进行网页与服务器中间的数据交换。 02年，Mozilla项目发布浏览器的第一版，之后改名为Firefox。 03年，Safari浏览器诞生。 05年，ajax（asynchronous javascript a">
+  <meta name="description" content="语法类 用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。  123console.log(b);var b=&quot;hi!&quot;;//运行后不会报错，打印出 &quot;undefined&quot; 其实运行时是这样的： 123var ;console.log(b);b=&quot;hi!&quot;; 由于变量提升导">
 <meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javacript学习散记">
+<meta property="og:title" content="javacript容易遗漏，也容易被面试官为难的点">
 <meta property="og:url" content="http://www.chaixuhong.com/2017/05/21/javacript学习散记/index.html">
 <meta property="og:site_name" content="柴子博客">
-<meta property="og:description" content="历史 99年，ie5部署了XMLHttpRequest接口，从此javascript可以向服务器发送http请求，为ajax的诞生奠定了基础。 2001年，Json格式诞生，目的是取代XML进行网页与服务器中间的数据交换。 02年，Mozilla项目发布浏览器的第一版，之后改名为Firefox。 03年，Safari浏览器诞生。 05年，ajax（asynchronous javascript a">
-<meta property="og:updated_time" content="2017-05-25T16:39:42.000Z">
+<meta property="og:description" content="语法类 用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。  123console.log(b);var b=&quot;hi!&quot;;//运行后不会报错，打印出 &quot;undefined&quot; 其实运行时是这样的： 123var ;console.log(b);b=&quot;hi!&quot;; 由于变量提升导">
+<meta property="og:image" content="http://www.chaixuhong.com/images/js学习散记/base/01.png">
+<meta property="og:image" content="http://www.chaixuhong.com/images/js学习散记/base/02.png">
+<meta property="og:updated_time" content="2017-05-30T17:04:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javacript学习散记">
-<meta name="twitter:description" content="历史 99年，ie5部署了XMLHttpRequest接口，从此javascript可以向服务器发送http请求，为ajax的诞生奠定了基础。 2001年，Json格式诞生，目的是取代XML进行网页与服务器中间的数据交换。 02年，Mozilla项目发布浏览器的第一版，之后改名为Firefox。 03年，Safari浏览器诞生。 05年，ajax（asynchronous javascript a">
+<meta name="twitter:title" content="javacript容易遗漏，也容易被面试官为难的点">
+<meta name="twitter:description" content="语法类 用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。  123console.log(b);var b=&quot;hi!&quot;;//运行后不会报错，打印出 &quot;undefined&quot; 其实运行时是这样的： 123var ;console.log(b);b=&quot;hi!&quot;; 由于变量提升导">
+<meta name="twitter:image" content="http://www.chaixuhong.com/images/js学习散记/base/01.png">
   
     <link rel="alternative" href="/atom.xml" title="柴子博客" type="application/atom+xml">
   
@@ -157,7 +160,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      javacript学习散记
+      javacript容易遗漏，也容易被面试官为难的点
     </h1>
   
 
@@ -170,34 +173,47 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h1><ul>
-<li>99年，ie5部署了XMLHttpRequest接口，从此javascript可以向服务器发送http请求，为ajax的诞生奠定了基础。</li>
-<li>2001年，Json格式诞生，目的是取代XML进行网页与服务器中间的数据交换。</li>
-<li>02年，Mozilla项目发布浏览器的第一版，之后改名为Firefox。</li>
-<li>03年，Safari浏览器诞生。</li>
-<li>05年，ajax（asynchronous javascript and XML）诞生，web2.0时代来临。</li>
-<li>06年，jQuery诞生。</li>
-<li>08年，V8编译器诞生。很大程度的提升了javascript的运行速度和性能。</li>
-<li>09年，NodeJs诞生。标志着javascript可以用于服务器端编程。</li>
-<li>2010年，npm诞生，javascript进入模块化开发的时代。</li>
-<li>12年，单页应用崛起，AngularJs出现。</li>
-<li>13年，Facebook发布了React，引入JSX语法。</li>
-<li>15年6月，ES6正式发布，定名为“ECMAScript 2015 标准”，JS诞生20年。</li>
-<li>2016年6月，《ECMAScript 2016 标准》发布</li>
-</ul>
-<a id="more"></a>
-<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><ul>
-<li><p>用“var ”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(a);</div><div class="line"><span class="keyword">var</span> a=<span class="number">1</span>;</div><div class="line"><span class="comment">//运行后不会报错，打印出 "undefined"</span></div></pre></td></tr></table></figure>
+        <!--
+# 历史
+
++ 99年，ie5部署了XMLHttpRequest接口，从此javascript可以向服务器发送http请求，为ajax的诞生奠定了基础。
++ 2001年，Json格式诞生，目的是取代XML进行网页与服务器中间的数据交换。
++ 02年，Mozilla项目发布浏览器的第一版，之后改名为Firefox。
++ 03年，Safari浏览器诞生。
++ 05年，ajax（asynchronous javascript and XML）诞生，web2.0时代来临。
++ 06年，jQuery诞生。
++ 08年，V8编译器诞生。很大程度的提升了javascript的运行速度和性能。
++ 09年，NodeJs诞生。标志着javascript可以用于服务器端编程。
++ 2010年，npm诞生，javascript进入模块化开发的时代。
++ 12年，单页应用崛起，AngularJs出现。
++ 13年，Facebook发布了React，引入JSX语法。
++ 15年6月，ES6正式发布，定名为“ECMAScript 2015 标准”，JS诞生20年。
++ 2016年6月，《ECMAScript 2016 标准》发布
+-->
+<h1 id="语法类"><a href="#语法类" class="headerlink" title="语法类"></a>语法类</h1><ul>
+<li><p>用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。</p>
+<p><img src="/images/js学习散记/base/01.png" style="width:50%;"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(b);</div><div class="line"><span class="keyword">var</span> b=<span class="string">"hi!"</span>;</div><div class="line"><span class="comment">//运行后不会报错，打印出 "undefined"</span></div></pre></td></tr></table></figure>
 <p>其实运行时是这样的：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a;</div><div class="line"><span class="built_in">console</span>.log(a);</div><div class="line">a=<span class="number">1</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ;</div><div class="line"><span class="built_in">console</span>.log(b);</div><div class="line">b=<span class="string">"hi!"</span>;</div></pre></td></tr></table></figure>
 <p>由于变量提升导致的，如果不用“var”的方式声明，则不会出现，且上诉编写的代码无法运行，会报错。</p>
 </li>
 <li><p>区块不构成单独的作用域，与不使用区块的情况没有任何区别</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="keyword">var</span> a=<span class="number">0</span>;<span class="comment">//在区块内定义了一个变量</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a);<span class="comment">//0  在外部也能将其打印出来</span></div></pre></td></tr></table></figure>
+<p><img src="/images/js学习散记/base/02.png" style="width:50%;"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  b=<span class="string">"hi!"</span>;<span class="comment">//在区块内定义了一个变量</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(b);<span class="comment">//hi  在外部也能将其打印出来</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><ul>
+<p><em>ps:但凡学过一种高级语言的的童鞋都知道，局部变量与全局变量的区别，在js中，区块是无法定义局部变量的，所以以后建议童鞋们，尽量避免相同名称的变量命名，会有意想不到的坑出现……</em></p>
+<blockquote>
+<p><strong>提问1:下面js代码运行时会不会报错？为什么？</strong>  </p>
+</blockquote>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</div><div class="line">  <span class="built_in">console</span>.log(tmp);</div><div class="line">&#125;</div><div class="line">   <span class="keyword">var</span> tmp=<span class="string">"hello world!"</span>;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<blockquote>
+<p><strong>提问2:下面js代码运行时会不会报错？为什么？</strong>  </p>
+</blockquote>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</div><div class="line">  tmp=<span class="string">"hello world!"</span>;</div><div class="line">&#125;</div><div class="line">   <span class="built_in">console</span>.log(tmp);</div></pre></td></tr></table></figure>
+<h1 id="数据类型类"><a href="#数据类型类" class="headerlink" title="数据类型类"></a>数据类型类</h1><ul>
 <li><p>javascript数据类型有六种：</p>
 <ol>
 <li>数值(number) ：整数小数  –&gt;原始类型</li>
@@ -212,25 +228,22 @@ var _hmt = _hmt || [];
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> object = &#123;&#125;; <span class="keyword">var</span> object = <span class="keyword">new</span> <span class="built_in">Object</span>(); <span class="comment">//狭义的对象</span></div><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(); <span class="comment">//数组也是对象</span></div><div class="line"><span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125; ; <span class="comment">//函数也是对象</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>  <em>以上三种统称为广义的对象</em><br>  狭义的对象与数组是两种不同的原始类型数据的组合方式，而函数则是处理数据的方法。Javascript把函数当成一种数据类型，可以像其他数据类型一样，进行赋值和传递，体现了Javascript的“函数式”语言的本质。</p>
+<p>  <em>以上三种统称为广义的对象</em></p>
+<ol>
+<li>狭义的对象与数组是两种不同的原始类型数据的组合方式，而函数则是处理数据的方法。</li>
+<li>Javascript把函数当成一种数据类型，可以像其他数据类型一样，进行赋值和传递，体现了Javascript的“函数式”语言的本质。</li>
+</ol>
 <ul>
 <li><p>布尔值  </p>
 <p>除了以下六个值在自动转换为布尔值时，被认为是false，其他都视为true。    </p>
-<blockquote>
-<ol>
-<li>undefined  </li>
-<li>null  </li>
-<li>‘’  </li>
-<li>“”  </li>
-<li>NaN</li>
-<li>0</li>
-<li>false  </li>
-</ol>
-</blockquote>
-<p><strong>注意</strong>：空数组([]),空对象({})对应的布尔值是：true   </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>([]||&#123;&#125;)&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"haha"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// haha</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> <span class="literal">undefined</span>  </div><div class="line"><span class="number">2.</span> <span class="literal">null</span>  </div><div class="line"><span class="number">3.</span> <span class="string">''</span>  </div><div class="line"><span class="number">4.</span> <span class="string">""</span>  </div><div class="line"><span class="number">5.</span> <span class="literal">NaN</span></div><div class="line"><span class="number">6.</span> <span class="number">0</span></div><div class="line"><span class="number">7.</span> <span class="literal">false</span></div></pre></td></tr></table></figure>
+<!-- **注意**：空数组([]),空对象({})对应的布尔值是：true  --> 
 </li>
 </ul>
+<blockquote>
+<p>问题1：以下代码输出结果是什么，为什么？</p>
+</blockquote>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=<span class="number">3</span>,b=<span class="number">2</span>,c=<span class="string">''</span>,d=[];</div><div class="line"><span class="keyword">if</span>(c)&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"reslut1="</span>+(a+b));</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>(d)&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"reslut2="</span>+(b-a));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h2><ul>
 <li><p>在Javascript内部，所有数字都是以64位浮点数形式存储的，整数也是，所以1与1.0是同一个数，不仅仅是值相同。所有的数字，都是   浮点数，在底层就没有整数。要注意的是：由于浮点数不是精确的值，导致小数会出现各种问题，比如：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">0.3</span>/<span class="number">0.1</span>)</div><div class="line"><span class="comment">//2.9999999999999996</span></div><div class="line"><span class="built_in">console</span>.log(<span class="number">0.1</span>+<span class="number">0.2</span>===<span class="number">0.3</span>) </div><div class="line"><span class="comment">//false</span></div></pre></td></tr></table></figure>
@@ -260,7 +273,7 @@ var _hmt = _hmt || [];
             <span class="tooltip-content">
               <span class="tooltip-text">
                 <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>多些客官，有空常来啊！<i class="icon icon-quo-right"></i></p>
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>多谢客官，有空常来啊！<i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
                     
                     
@@ -355,15 +368,6 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
-  
-    <a href="/2017/05/24/闪电侠第三季第23集终结/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          闪电侠第三季第23集终结
-        
-      </div>
-    </a>
   
   
     <a href="/2017/05/20/gulp.js--好用的静态文件打包工具/" id="article-nav-older" class="article-nav-link-wrap">
@@ -490,19 +494,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HEXO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">美剧</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">闪电侠</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
             
             <div class="clearfix"></div>
