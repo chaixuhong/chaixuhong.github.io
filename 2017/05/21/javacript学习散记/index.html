@@ -17,7 +17,7 @@
 <meta property="og:description" content="语法类 用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。  123console.log(b);var b=&quot;hi!&quot;;//运行后不会报错，打印出 &quot;undefined&quot; 其实运行时是这样的： 123var ;console.log(b);b=&quot;hi!&quot;; 由于变量提升导">
 <meta property="og:image" content="http://www.chaixuhong.com/images/js学习散记/base/01.png">
 <meta property="og:image" content="http://www.chaixuhong.com/images/js学习散记/base/02.png">
-<meta property="og:updated_time" content="2017-05-30T17:12:15.000Z">
+<meta property="og:updated_time" content="2017-05-30T17:15:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javacript容易遗漏，也容易被面试官为难的点">
 <meta name="twitter:description" content="语法类 用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。  123console.log(b);var b=&quot;hi!&quot;;//运行后不会报错，打印出 &quot;undefined&quot; 其实运行时是这样的： 123var ;console.log(b);b=&quot;hi!&quot;; 由于变量提升导">
@@ -210,9 +210,9 @@ var _hmt = _hmt || [];
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</div><div class="line">  <span class="built_in">console</span>.log(tmp);</div><div class="line">&#125;</div><div class="line">   <span class="keyword">var</span> tmp=<span class="string">"hello world!"</span>;</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <blockquote>
-<p><strong>问题2:下面js代码运行时会不会报错？为什么？</strong>  </p>
+<p><strong>问题2:下面js代码运行后打印出了值，为什么？</strong>  </p>
 </blockquote>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</div><div class="line">  tmp=<span class="string">"hello world!"</span>;</div><div class="line">&#125;</div><div class="line">   <span class="built_in">console</span>.log(tmp);</div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</div><div class="line">  tmp=<span class="string">"hello world!"</span>;</div><div class="line">&#125;</div><div class="line">   <span class="built_in">console</span>.log(tmp);</div><div class="line">   <span class="comment">//hello world!</span></div></pre></td></tr></table></figure>
 <h1 id="数据类型类"><a href="#数据类型类" class="headerlink" title="数据类型类"></a>数据类型类</h1><ul>
 <li><p>javascript数据类型有六种：</p>
 <ol>
