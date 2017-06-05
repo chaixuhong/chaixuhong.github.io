@@ -6,24 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.chaixuhong.com">
-  <title>javacript容易遗漏，也容易被面试官为难的点 | 柴子博客</title>
+  <title>gulp.js--好用的静态文件打包工具 | 柴子的码农之路</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="语法类 用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。  123console.log(b);var b=&quot;hi!&quot;;//运行后不会报错，打印出 &quot;undefined&quot; 其实运行时是这样的： 123var ;console.log(b);b=&quot;hi!&quot;; 由于变量提升导">
-<meta name="keywords" content="Javascript">
+  <meta name="description" content="一句话概括gulp​    gulp是前端开发过程中，一种基于流的代码构建工具。是自动化构建项目的利器。 安装 安装前提是已经安装了NodeJs环境 1#	npm install -g gulp  全局装完后，需在要使用gulp的项目的根路径中，再单独装一次 1#	npm install gulp  如果想在安装的时候把gulp写进项目package.json文件的依赖中，则可以加上–save">
+<meta name="keywords" content="Gulp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javacript容易遗漏，也容易被面试官为难的点">
-<meta property="og:url" content="http://www.chaixuhong.com/2017/05/21/javacript学习散记/index.html">
-<meta property="og:site_name" content="柴子博客">
-<meta property="og:description" content="语法类 用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。  123console.log(b);var b=&quot;hi!&quot;;//运行后不会报错，打印出 &quot;undefined&quot; 其实运行时是这样的： 123var ;console.log(b);b=&quot;hi!&quot;; 由于变量提升导">
-<meta property="og:image" content="http://www.chaixuhong.com/images/js学习散记/base/01.png">
-<meta property="og:image" content="http://www.chaixuhong.com/images/js学习散记/base/02.png">
-<meta property="og:updated_time" content="2017-05-30T17:15:52.000Z">
+<meta property="og:title" content="gulp.js--好用的静态文件打包工具">
+<meta property="og:url" content="http://www.chaixuhong.com/2017/gulp.js--好用的静态文件打包工具/index.html">
+<meta property="og:site_name" content="柴子的码农之路">
+<meta property="og:description" content="一句话概括gulp​    gulp是前端开发过程中，一种基于流的代码构建工具。是自动化构建项目的利器。 安装 安装前提是已经安装了NodeJs环境 1#	npm install -g gulp  全局装完后，需在要使用gulp的项目的根路径中，再单独装一次 1#	npm install gulp  如果想在安装的时候把gulp写进项目package.json文件的依赖中，则可以加上–save">
+<meta property="og:updated_time" content="2017-05-25T18:14:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javacript容易遗漏，也容易被面试官为难的点">
-<meta name="twitter:description" content="语法类 用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。  123console.log(b);var b=&quot;hi!&quot;;//运行后不会报错，打印出 &quot;undefined&quot; 其实运行时是这样的： 123var ;console.log(b);b=&quot;hi!&quot;; 由于变量提升导">
-<meta name="twitter:image" content="http://www.chaixuhong.com/images/js学习散记/base/01.png">
+<meta name="twitter:title" content="gulp.js--好用的静态文件打包工具">
+<meta name="twitter:description" content="一句话概括gulp​    gulp是前端开发过程中，一种基于流的代码构建工具。是自动化构建项目的利器。 安装 安装前提是已经安装了NodeJs环境 1#	npm install -g gulp  全局装完后，需在要使用gulp的项目的根路径中，再单独装一次 1#	npm install gulp  如果想在安装的时候把gulp写进项目package.json文件的依赖中，则可以加上–save">
   
-    <link rel="alternative" href="/atom.xml" title="柴子博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="柴子的码农之路" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -153,113 +150,60 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-javacript学习散记" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-gulp.js--好用的静态文件打包工具" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      javacript容易遗漏，也容易被面试官为难的点
+      gulp.js--好用的静态文件打包工具
     </h1>
   
 
         
-        <a href="/2017/05/21/javacript学习散记/" class="archive-article-date">
-  	<time datetime="2017-05-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-21</time>
+        <a href="/2017/gulp.js--好用的静态文件打包工具/" class="archive-article-date">
+  	<time datetime="2017-05-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!--
-# 历史
-
-+ 99年，ie5部署了XMLHttpRequest接口，从此javascript可以向服务器发送http请求，为ajax的诞生奠定了基础。
-+ 2001年，Json格式诞生，目的是取代XML进行网页与服务器中间的数据交换。
-+ 02年，Mozilla项目发布浏览器的第一版，之后改名为Firefox。
-+ 03年，Safari浏览器诞生。
-+ 05年，ajax（asynchronous javascript and XML）诞生，web2.0时代来临。
-+ 06年，jQuery诞生。
-+ 08年，V8编译器诞生。很大程度的提升了javascript的运行速度和性能。
-+ 09年，NodeJs诞生。标志着javascript可以用于服务器端编程。
-+ 2010年，npm诞生，javascript进入模块化开发的时代。
-+ 12年，单页应用崛起，AngularJs出现。
-+ 13年，Facebook发布了React，引入JSX语法。
-+ 15年6月，ES6正式发布，定名为“ECMAScript 2015 标准”，JS诞生20年。
-+ 2016年6月，《ECMAScript 2016 标准》发布
--->
-<h1 id="语法类"><a href="#语法类" class="headerlink" title="语法类"></a>语法类</h1><ul>
-<li><p>用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。</p>
-<p><img src="/images/js学习散记/base/01.png" style="width:50%;"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(b);</div><div class="line"><span class="keyword">var</span> b=<span class="string">"hi!"</span>;</div><div class="line"><span class="comment">//运行后不会报错，打印出 "undefined"</span></div></pre></td></tr></table></figure>
-<p>其实运行时是这样的：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ;</div><div class="line"><span class="built_in">console</span>.log(b);</div><div class="line">b=<span class="string">"hi!"</span>;</div></pre></td></tr></table></figure>
-<p>由于变量提升导致的，如果不用“var”的方式声明，则不会出现，且上诉编写的代码无法运行，会报错。</p>
+        <h2 id="一句话概括gulp"><a href="#一句话概括gulp" class="headerlink" title="一句话概括gulp"></a>一句话概括gulp</h2><p>​    gulp是前端开发过程中，一种基于<strong>流</strong>的代码构建工具。是自动化构建项目的利器。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li><p>安装前提是已经安装了NodeJs环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#	npm install -g gulp</div></pre></td></tr></table></figure>
 </li>
-<li><p>区块不构成单独的作用域，与不使用区块的情况没有任何区别</p>
-<p><img src="/images/js学习散记/base/02.png" style="width:50%;"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  b=<span class="string">"hi!"</span>;<span class="comment">//在区块内定义了一个变量</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(b);<span class="comment">//hi  在外部也能将其打印出来</span></div></pre></td></tr></table></figure>
+<li><p>全局装完后，需在要使用gulp的项目的根路径中，再单独装一次</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#	npm install gulp</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果想在安装的时候把gulp写进项目package.json文件的依赖中，则可以加上–save   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#	npm install gulp -save</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><em>ps:但凡学过一种高级语言的的童鞋都知道，局部变量与全局变量的区别，在js中，区块是无法定义局部变量的，所以以后建议童鞋们，尽量避免相同名称的变量命名，会有意想不到的坑出现……</em></p>
-<blockquote>
-<p><strong>问题1:下面js代码运行时会不会报错？为什么？</strong>  </p>
-</blockquote>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</div><div class="line">  <span class="built_in">console</span>.log(tmp);</div><div class="line">&#125;</div><div class="line">   <span class="keyword">var</span> tmp=<span class="string">"hello world!"</span>;</div></pre></td></tr></table></figure>
+<hr>
 <a id="more"></a>
-<blockquote>
-<p><strong>问题2:下面js代码运行后打印出了值，为什么？</strong>  </p>
-</blockquote>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</div><div class="line">  tmp=<span class="string">"hello world!"</span>;</div><div class="line">&#125;</div><div class="line">   <span class="built_in">console</span>.log(tmp);</div><div class="line">   <span class="comment">//hello world!</span></div></pre></td></tr></table></figure>
-<h1 id="数据类型类"><a href="#数据类型类" class="headerlink" title="数据类型类"></a>数据类型类</h1><ul>
-<li><p>javascript数据类型有六种：</p>
-<ol>
-<li>数值(number) ：整数小数  –&gt;原始类型</li>
-<li>布尔(boolean) ： true false  –&gt;原始类型</li>
-<li>字符串(string) ：“Aasdasd”  –&gt;原始类型</li>
-<li>undefined ：未定义  –&gt;特殊值</li>
-<li>null ：没有值  –&gt;特殊值</li>
-<li>object ：对象 –&gt; 各种原始类型值组合起来的集合（合成类型）</li>
-</ol>
-</li>
-<li><p>对象又分为三种：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> object = &#123;&#125;; <span class="keyword">var</span> object = <span class="keyword">new</span> <span class="built_in">Object</span>(); <span class="comment">//狭义的对象</span></div><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(); <span class="comment">//数组也是对象</span></div><div class="line"><span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125; ; <span class="comment">//函数也是对象</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>  <em>以上三种统称为广义的对象</em></p>
-<ol>
-<li>狭义的对象与数组是两种不同的原始类型数据的组合方式，而函数则是处理数据的方法。</li>
-<li>Javascript把函数当成一种数据类型，可以像其他数据类型一样，进行赋值和传递，体现了Javascript的“函数式”语言的本质。</li>
-</ol>
+<h2 id="永远的”hello-world“"><a href="#永远的”hello-world“" class="headerlink" title="永远的”hello world“"></a>永远的”hello world“</h2><ul>
+<li><p>在项目根路径下新建名为“gulpfile.js”文件</p>
 <ul>
-<li><p>布尔值  </p>
-<p>除了以下六个值在自动转换为布尔值时，被认为是false，其他都视为true。    </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="literal">undefined</span>  </div><div class="line"><span class="literal">null</span>  </div><div class="line"><span class="string">''</span>  </div><div class="line"><span class="string">""</span>  </div><div class="line"><span class="literal">NaN</span></div><div class="line"><span class="number">0</span></div><div class="line"><span class="literal">false</span></div></pre></td></tr></table></figure>
-<!-- **注意**：空数组([]),空对象({})对应的布尔值是：true  --> 
+<li><p>gulpfile.js作为gulp的主文件，在命令行之行<code>gulp</code>命令时，会自动找这个文件</p>
+</li>
+<li><p>永远的”<strong>hello world</strong>“，在gulpfile.js中写入如下代码，新建gulp.task任务，第一个参数任务名，直接执行gulp命令，默认执行名为”default“的任务</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line">gulp.task(<span class="string">"default"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"hello world"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<blockquote>
-<p>问题1：以下代码输出结果是什么，为什么？</p>
-</blockquote>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=<span class="number">3</span>,b=<span class="number">2</span>,c=<span class="string">''</span>,d=[];</div><div class="line"><span class="keyword">if</span>(c)&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"reslut1="</span>+(a+b));</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>(d)&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"reslut2="</span>+(b-a));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h2><ul>
-<li><p>在Javascript内部，所有数字都是以64位浮点数形式存储的，整数也是，所以1与1.0是同一个数，不仅仅是值相同。所有的数字，都是   浮点数，在底层就没有整数。要注意的是：由于浮点数不是精确的值，导致小数会出现各种问题，比如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">0.3</span>/<span class="number">0.1</span>)</div><div class="line"><span class="comment">//2.9999999999999996</span></div><div class="line"><span class="built_in">console</span>.log(<span class="number">0.1</span>+<span class="number">0.2</span>===<span class="number">0.3</span>) </div><div class="line"><span class="comment">//false</span></div></pre></td></tr></table></figure>
 </li>
-<li><p>浮点数  </p>
-<ol>
-<li>组成：</li>
-</ol>
-<blockquote>
-<p>第1位：正负位，0表示正数，1表示负数。<br>第2位到第12位：指数位，存储指数的部分。<br>第13位到第64位：小数位，存储小数部分，即有效数字。  </p>
-</blockquote>
-<ol>
-<li>格式：<br><code>(-1)^正负位 * 1.xxxxx (小数位) * 2^指数位</code></li>
-</ol>
+<li><p>在该路径下执行<code>gulp</code>命令，结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#	gulp</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[21:37:53] Using gulpfile ~/ruijie/moraledukids/desktop/gulpfile.js</div><div class="line">[21:37:53] Starting &apos;test1&apos;...</div><div class="line">hello world</div><div class="line">[21:37:53] Finished &apos;test1&apos; after 191 μs</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<p><em>ps：是不是感觉很简单，那就对了，gulp就是这样，学习成本低，易掌握。</em></p>
+<hr>
+<h2 id="说说gulp-API"><a href="#说说gulp-API" class="headerlink" title="说说gulp API"></a>说说gulp API</h2><ol>
+<li><strong>guip.src(globs[,options])</strong></li>
+</ol>
 
       
 
@@ -299,7 +243,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Gulp</a>
         		</li>
       		
 		</ul>
@@ -355,7 +299,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.chaixuhong.com/2017/05/21/javacript学习散记/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.chaixuhong.com/2017/gulp.js--好用的静态文件打包工具/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -369,9 +313,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
+    <a href="/2017/javacript学习散记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          javacript容易遗漏，也容易被面试官为难的点
+        
+      </div>
+    </a>
   
-    <a href="/2017/05/20/gulp.js--好用的静态文件打包工具/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">gulp.js--好用的静态文件打包工具</div>
+  
+    <a href="/2017/http解析/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Http请求头，响应头，错误码解析</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -387,8 +340,8 @@ var _hmt = _hmt || [];
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://www.chaixuhong.com/2017/05/21/javacript学习散记/", 
-    sourceId: "javacript学习散记",
+    url: "http://www.chaixuhong.com/2017/gulp.js--好用的静态文件打包工具/", 
+    sourceId: "gulp.js--好用的静态文件打包工具",
     productKey: "2fb522bfb4864958ba8f57419f614be9",
     target: "cloud-tie-wrapper"
   };
@@ -408,7 +361,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-center">
-    		&copy; 2017 柴子博客  Content By chaixuhong. All Rights Reserved
+    		&copy; 2017 柴子的码农之路  Content By chaixuhong. All Rights Reserved
     	</div>
       	<div class="footer-right">
       		<!--<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten-->
