@@ -12,7 +12,7 @@
 <meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javacript容易遗漏，也容易被面试官为难的点">
-<meta property="og:url" content="http://www.chaixuhong.com/2017/javacript学习散记/index.html">
+<meta property="og:url" content="http://www.chaixuhong.com/2017/javacript学习散记">
 <meta property="og:site_name" content="柴子的码农之路">
 <meta property="og:description" content="语法类 用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。  123console.log(b);var b=&quot;hi!&quot;;//运行后不会报错，打印出 &quot;undefined&quot; 其实运行时是这样的： 123var ;console.log(b);b=&quot;hi!&quot;; 由于变量提升导">
 <meta property="og:image" content="http://www.chaixuhong.com/images/js学习散记/base/01.png">
@@ -165,7 +165,7 @@ var _hmt = _hmt || [];
   
 
         
-        <a href="/2017/javacript学习散记/" class="archive-article-date">
+        <a href="/2017/javacript学习散记" class="archive-article-date">
   	<time datetime="2017-05-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-21</time>
 </a>
         
@@ -355,7 +355,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.chaixuhong.com/2017/javacript学习散记/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.chaixuhong.com/2017/javacript学习散记" alt="微信分享二维码">
     </div>
 </div>
 
@@ -370,7 +370,7 @@ var _hmt = _hmt || [];
 <nav id="article-nav">
   
   
-    <a href="/2017/gulp.js--好用的静态文件打包工具/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/gulp.js--好用的静态文件打包工具" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">gulp.js--好用的静态文件打包工具</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -387,7 +387,7 @@ var _hmt = _hmt || [];
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://www.chaixuhong.com/2017/javacript学习散记/", 
+    url: "http://www.chaixuhong.com/2017/javacript学习散记", 
     sourceId: "javacript学习散记",
     productKey: "2fb522bfb4864958ba8f57419f614be9",
     target: "cloud-tie-wrapper"
