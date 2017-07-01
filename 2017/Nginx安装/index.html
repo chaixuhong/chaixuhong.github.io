@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.chaixuhong.com">
-  <title>Tag: Javascript | 柴子的码农之路</title>
+  <title>nginx安装 | 柴子的码农之路</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端开发,后端开发,全栈开发,NodeJs学习,ReactJs,Java">
-<meta name="keywords" content="node,react,java,前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,编程,代码,开源,html,css">
-<meta property="og:type" content="website">
-<meta property="og:title" content="柴子的码农之路">
-<meta property="og:url" content="http://www.chaixuhong.com/tags/Javascript/index.html">
+  <meta name="description" content="系统平台：CentOS  64位 一、安装编译工具及库文件 1yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel 二、首先要安装 PCRE PCRE 作用是让 Nginx 支持 Rewrite 功能。 1、下载 PCRE 安装包，下载地址： 1# wget https://sourceforge.ne">
+<meta name="keywords" content="nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx安装">
+<meta property="og:url" content="http://www.chaixuhong.com/2017/Nginx安装/index.html">
 <meta property="og:site_name" content="柴子的码农之路">
-<meta property="og:description" content="前端开发,后端开发,全栈开发,NodeJs学习,ReactJs,Java">
+<meta property="og:description" content="系统平台：CentOS  64位 一、安装编译工具及库文件 1yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel 二、首先要安装 PCRE PCRE 作用是让 Nginx 支持 Rewrite 功能。 1、下载 PCRE 安装包，下载地址： 1# wget https://sourceforge.ne">
+<meta property="og:updated_time" content="2017-07-01T14:33:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="柴子的码农之路">
-<meta name="twitter:description" content="前端开发,后端开发,全栈开发,NodeJs学习,ReactJs,Java">
+<meta name="twitter:title" content="nginx安装">
+<meta name="twitter:description" content="系统平台：CentOS  64位 一、安装编译工具及库文件 1yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel 二、首先要安装 PCRE PCRE 作用是让 Nginx 支持 Rewrite 功能。 1、下载 PCRE 安装包，下载地址： 1# wget https://sourceforge.ne">
   
     <link rel="alternative" href="/atom.xml" title="柴子的码农之路" type="application/atom+xml">
   
@@ -149,60 +150,207 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Nginx安装" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/javacript学习散记/" class="archive-article-date">
-  	<time datetime="2017-05-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-21</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/javacript学习散记/">javacript容易遗漏，也容易被面试官为难的点</a>
+    <h1 class="article-title" itemprop="name">
+      nginx安装
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/Nginx安装/" class="archive-article-date">
+  	<time datetime="2017-06-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>系统平台：CentOS  64位</p>
+<p>一、安装编译工具及库文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel</div></pre></td></tr></table></figure>
+<p>二、首先要安装 PCRE</p>
+<p>PCRE 作用是让 Nginx 支持 Rewrite 功能。</p>
+<p>1、下载 PCRE 安装包，下载地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># wget https://sourceforge.net/projects/pcre/files/pcre/8.40/pcre-8.40.tar.gz</div></pre></td></tr></table></figure>
+<p>2、解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar zxvf pcre-8.40.tar.gz</div></pre></td></tr></table></figure>
+<p>3、进入安装包目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd pcre-8.40.tar.gz</div></pre></td></tr></table></figure>
+<p>4、编译安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./configure</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<p>5、查看pcre版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./pcre-config --version</div></pre></td></tr></table></figure>
+<h3 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h3><p>1、下载 Nginx，下载地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://nginx.org/download/nginx-1.13.2.tar.gz</div></pre></td></tr></table></figure>
+<p>2、解压安装包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar zxvf  nginx-1.13.2.tar.gz</div></pre></td></tr></table></figure>
+<p>3、进入安装包目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd nginx-1.13.2</div></pre></td></tr></table></figure>
+<p>4、编译安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># ./configure --prefix=/usr/local/webserver/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre=/usr/local/src/pcre-8.40</div><div class="line"># make</div><div class="line"># make install</div></pre></td></tr></table></figure>
+<p>5、查看nginx版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/webserver/nginx/sbin/nginx -v</div></pre></td></tr></table></figure>
+<p>到此，nginx安装完成。</p>
+<hr>
+<h2 id="Nginx-配置"><a href="#Nginx-配置" class="headerlink" title="Nginx 配置"></a>Nginx 配置</h2><p>创建 Nginx 运行使用的用户 www：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@bogon conf]# /usr/sbin/groupadd www </div><div class="line">[root@bogon conf]# /usr/sbin/useradd -g www www</div></pre></td></tr></table></figure>
+<p>配置nginx.conf ，将/usr/local/webserver/nginx/conf/nginx.conf替换为以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">[root@bogon conf]#  cat /usr/local/webserver/nginx/conf/nginx.conf</div><div class="line"></div><div class="line">user www www;</div><div class="line">worker_processes 2; #设置值和CPU核心数一致</div><div class="line">error_log /usr/local/webserver/nginx/logs/nginx_error.log crit; #日志位置和日志级别</div><div class="line">pid /usr/local/webserver/nginx/nginx.pid;</div><div class="line">#Specifies the value for maximum file descriptors that can be opened by this process.</div><div class="line">worker_rlimit_nofile 65535;</div><div class="line">events</div><div class="line">&#123;</div><div class="line">  use epoll;</div><div class="line">  worker_connections 65535;</div><div class="line">&#125;</div><div class="line">http</div><div class="line">&#123;</div><div class="line">  include mime.types;</div><div class="line">  default_type application/octet-stream;</div><div class="line">  log_format main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</div><div class="line">               &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</div><div class="line">               &apos;&quot;$http_user_agent&quot; $http_x_forwarded_for&apos;;</div><div class="line">  </div><div class="line">#charset gb2312;</div><div class="line">     </div><div class="line">  server_names_hash_bucket_size 128;</div><div class="line">  client_header_buffer_size 32k;</div><div class="line">  large_client_header_buffers 4 32k;</div><div class="line">  client_max_body_size 8m;</div><div class="line">     </div><div class="line">  sendfile on;</div><div class="line">  tcp_nopush on;</div><div class="line">  keepalive_timeout 60;</div><div class="line">  tcp_nodelay on;</div><div class="line">  fastcgi_connect_timeout 300;</div><div class="line">  fastcgi_send_timeout 300;</div><div class="line">  fastcgi_read_timeout 300;</div><div class="line">  fastcgi_buffer_size 64k;</div><div class="line">  fastcgi_buffers 4 64k;</div><div class="line">  fastcgi_busy_buffers_size 128k;</div><div class="line">  fastcgi_temp_file_write_size 128k;</div><div class="line">  gzip on; </div><div class="line">  gzip_min_length 1k;</div><div class="line">  gzip_buffers 4 16k;</div><div class="line">  gzip_http_version 1.0;</div><div class="line">  gzip_comp_level 2;</div><div class="line">  gzip_types text/plain application/x-javascript text/css application/xml;</div><div class="line">  gzip_vary on;</div><div class="line"> </div><div class="line">  #limit_zone crawler $binary_remote_addr 10m;</div><div class="line"> #下面是server虚拟主机的配置</div><div class="line"> server</div><div class="line">  &#123;</div><div class="line">    listen 80;#监听端口</div><div class="line">    server_name localhost;#域名</div><div class="line">    index index.html index.htm index.php;</div><div class="line">    root /usr/local/webserver/nginx/html;#站点目录</div><div class="line">      location ~ .*\.(php|php5)?$</div><div class="line">    &#123;</div><div class="line">      #fastcgi_pass unix:/tmp/php-cgi.sock;</div><div class="line">      fastcgi_pass 127.0.0.1:9000;</div><div class="line">      fastcgi_index index.php;</div><div class="line">      include fastcgi.conf;</div><div class="line">    &#125;</div><div class="line">    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|ico)$</div><div class="line">    &#123;</div><div class="line">      expires 30d;</div><div class="line">  # access_log off;</div><div class="line">    &#125;</div><div class="line">    location ~ .*\.(js|css)?$</div><div class="line">    &#123;</div><div class="line">      expires 15d;</div><div class="line">   # access_log off;</div><div class="line">    &#125;</div><div class="line">    access_log off;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>检查配置文件ngnix.conf的正确性命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/webserver/nginx/sbin/nginx -t</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="启动-Nginx"><a href="#启动-Nginx" class="headerlink" title="启动 Nginx"></a>启动 Nginx</h2><p>Nginx 启动命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/webserver/nginx/sbin/nginx</div></pre></td></tr></table></figure>
+<p>查看Nginx是否启动成功：</p>
+<p>1.查看进程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps -ef |grep nginx</div></pre></td></tr></table></figure>
+<p>2.服务器访问</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl localhost</div></pre></td></tr></table></figure>
+<p>​    如果打印出html代码，并且有“Welcome to nginx!”,那么恭喜你！说明上述所做都已成功，接下来就可以学习如何配置nginx了。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>多谢客官，有空常来啊！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/chaixuhong.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.chaixuhong.com/2017/Nginx安装/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/mobile-ant/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://www.chaixuhong.com/2017/Nginx安装/", 
+    sourceId: "Nginx安装",
+    productKey: "2fb522bfb4864958ba8f57419f614be9",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -225,9 +373,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

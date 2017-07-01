@@ -151,6 +151,131 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Nginx安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/Nginx安装/">nginx安装</a>
+    </h1>
+  
+
+        
+        <a href="/2017/Nginx安装/" class="archive-article-date">
+  	<time datetime="2017-06-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>系统平台：CentOS  64位</p>
+<p>一、安装编译工具及库文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel</div></pre></td></tr></table></figure>
+<p>二、首先要安装 PCRE</p>
+<p>PCRE 作用是让 Nginx 支持 Rewrite 功能。</p>
+<p>1、下载 PCRE 安装包，下载地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># wget https://sourceforge.net/projects/pcre/files/pcre/8.40/pcre-8.40.tar.gz</div></pre></td></tr></table></figure>
+<p>2、解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar zxvf pcre-8.40.tar.gz</div></pre></td></tr></table></figure>
+<p>3、进入安装包目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd pcre-8.40.tar.gz</div></pre></td></tr></table></figure>
+<p>4、编译安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./configure</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<p>5、查看pcre版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./pcre-config --version</div></pre></td></tr></table></figure>
+<h3 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h3><p>1、下载 Nginx，下载地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://nginx.org/download/nginx-1.13.2.tar.gz</div></pre></td></tr></table></figure>
+<p>2、解压安装包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar zxvf  nginx-1.13.2.tar.gz</div></pre></td></tr></table></figure>
+<p>3、进入安装包目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd nginx-1.13.2</div></pre></td></tr></table></figure>
+<p>4、编译安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># ./configure --prefix=/usr/local/webserver/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre=/usr/local/src/pcre-8.40</div><div class="line"># make</div><div class="line"># make install</div></pre></td></tr></table></figure>
+<p>5、查看nginx版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/webserver/nginx/sbin/nginx -v</div></pre></td></tr></table></figure>
+<p>到此，nginx安装完成。</p>
+<hr>
+<h2 id="Nginx-配置"><a href="#Nginx-配置" class="headerlink" title="Nginx 配置"></a>Nginx 配置</h2><p>创建 Nginx 运行使用的用户 www：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@bogon conf]# /usr/sbin/groupadd www </div><div class="line">[root@bogon conf]# /usr/sbin/useradd -g www www</div></pre></td></tr></table></figure>
+<p>配置nginx.conf ，将/usr/local/webserver/nginx/conf/nginx.conf替换为以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">[root@bogon conf]#  cat /usr/local/webserver/nginx/conf/nginx.conf</div><div class="line"></div><div class="line">user www www;</div><div class="line">worker_processes 2; #设置值和CPU核心数一致</div><div class="line">error_log /usr/local/webserver/nginx/logs/nginx_error.log crit; #日志位置和日志级别</div><div class="line">pid /usr/local/webserver/nginx/nginx.pid;</div><div class="line">#Specifies the value for maximum file descriptors that can be opened by this process.</div><div class="line">worker_rlimit_nofile 65535;</div><div class="line">events</div><div class="line">&#123;</div><div class="line">  use epoll;</div><div class="line">  worker_connections 65535;</div><div class="line">&#125;</div><div class="line">http</div><div class="line">&#123;</div><div class="line">  include mime.types;</div><div class="line">  default_type application/octet-stream;</div><div class="line">  log_format main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</div><div class="line">               &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</div><div class="line">               &apos;&quot;$http_user_agent&quot; $http_x_forwarded_for&apos;;</div><div class="line">  </div><div class="line">#charset gb2312;</div><div class="line">     </div><div class="line">  server_names_hash_bucket_size 128;</div><div class="line">  client_header_buffer_size 32k;</div><div class="line">  large_client_header_buffers 4 32k;</div><div class="line">  client_max_body_size 8m;</div><div class="line">     </div><div class="line">  sendfile on;</div><div class="line">  tcp_nopush on;</div><div class="line">  keepalive_timeout 60;</div><div class="line">  tcp_nodelay on;</div><div class="line">  fastcgi_connect_timeout 300;</div><div class="line">  fastcgi_send_timeout 300;</div><div class="line">  fastcgi_read_timeout 300;</div><div class="line">  fastcgi_buffer_size 64k;</div><div class="line">  fastcgi_buffers 4 64k;</div><div class="line">  fastcgi_busy_buffers_size 128k;</div><div class="line">  fastcgi_temp_file_write_size 128k;</div><div class="line">  gzip on; </div><div class="line">  gzip_min_length 1k;</div><div class="line">  gzip_buffers 4 16k;</div><div class="line">  gzip_http_version 1.0;</div><div class="line">  gzip_comp_level 2;</div><div class="line">  gzip_types text/plain application/x-javascript text/css application/xml;</div><div class="line">  gzip_vary on;</div><div class="line"> </div><div class="line">  #limit_zone crawler $binary_remote_addr 10m;</div><div class="line"> #下面是server虚拟主机的配置</div><div class="line"> server</div><div class="line">  &#123;</div><div class="line">    listen 80;#监听端口</div><div class="line">    server_name localhost;#域名</div><div class="line">    index index.html index.htm index.php;</div><div class="line">    root /usr/local/webserver/nginx/html;#站点目录</div><div class="line">      location ~ .*\.(php|php5)?$</div><div class="line">    &#123;</div><div class="line">      #fastcgi_pass unix:/tmp/php-cgi.sock;</div><div class="line">      fastcgi_pass 127.0.0.1:9000;</div><div class="line">      fastcgi_index index.php;</div><div class="line">      include fastcgi.conf;</div><div class="line">    &#125;</div><div class="line">    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|ico)$</div><div class="line">    &#123;</div><div class="line">      expires 30d;</div><div class="line">  # access_log off;</div><div class="line">    &#125;</div><div class="line">    location ~ .*\.(js|css)?$</div><div class="line">    &#123;</div><div class="line">      expires 15d;</div><div class="line">   # access_log off;</div><div class="line">    &#125;</div><div class="line">    access_log off;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>检查配置文件ngnix.conf的正确性命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/webserver/nginx/sbin/nginx -t</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="启动-Nginx"><a href="#启动-Nginx" class="headerlink" title="启动 Nginx"></a>启动 Nginx</h2><p>Nginx 启动命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/webserver/nginx/sbin/nginx</div></pre></td></tr></table></figure>
+<p>查看Nginx是否启动成功：</p>
+<p>1.查看进程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps -ef |grep nginx</div></pre></td></tr></table></figure>
+<p>2.服务器访问</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl localhost</div></pre></td></tr></table></figure>
+<p>​    如果打印出html代码，并且有“Welcome to nginx!”,那么恭喜你！说明上述所做都已成功，接下来就可以学习如何配置nginx了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-mobile-ant" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>picker  data接受的参数形式{[value:’’,label:’’],[value:’’,label:’’],[value:’’,label:’’]}<br>        value 接受的参数形式 ：数组</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-javacript学习散记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -561,6 +686,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
