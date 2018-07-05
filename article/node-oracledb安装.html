@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Node,Oracle," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="书写青春" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="问题用Nodejs连接oracle是比较麻烦的，不像使用mysql，Mogondb，redis等有相当丰富的库。就连官方提供的oracledb也在linux上安装的时候屡屡失败。 准备工作 Nodejs v8.3.0  —&amp;gt; 下载地址node-v8.3.0-linux-x64.tar.xz 为什么指定8.3.0版本呢，经过多个版本Node在多个版本的linux上进行的多次测试，得出结论，8.">
+<meta name="keywords" content="Node,Oracle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux下nodejs安装oracle驱动">
+<meta property="og:url" content="http://www.chaixuhong.com/article/node-oracledb安装.html">
+<meta property="og:site_name" content="书写青春">
+<meta property="og:description" content="问题用Nodejs连接oracle是比较麻烦的，不像使用mysql，Mogondb，redis等有相当丰富的库。就连官方提供的oracledb也在linux上安装的时候屡屡失败。 准备工作 Nodejs v8.3.0  —&amp;gt; 下载地址node-v8.3.0-linux-x64.tar.xz 为什么指定8.3.0版本呢，经过多个版本Node在多个版本的linux上进行的多次测试，得出结论，8.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-02T07:00:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux下nodejs安装oracle驱动">
+<meta name="twitter:description" content="问题用Nodejs连接oracle是比较麻烦的，不像使用mysql，Mogondb，redis等有相当丰富的库。就连官方提供的oracledb也在linux上安装的时候屡屡失败。 准备工作 Nodejs v8.3.0  —&amp;gt; 下载地址node-v8.3.0-linux-x64.tar.xz 为什么指定8.3.0版本呢，经过多个版本Node在多个版本的linux上进行的多次测试，得出结论，8.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.chaixuhong.com/article/node-oracledb安装.html"/>
+
+
+
+
+
+  <title>linux下nodejs安装oracle驱动 | 书写青春</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7c989efa57a6fe2f80045273a0053e11";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">书写青春</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">生活点滴</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.chaixuhong.com/article/node-oracledb安装.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="柴旭红">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="书写青春">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">linux下nodejs安装oracle驱动</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-14T00:00:00+08:00">
+                2018-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/article/node-oracledb安装.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="article/node-oracledb安装.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/article/node-oracledb安装.html" class="leancloud_visitors" data-flag-title="linux下nodejs安装oracle驱动">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>用Nodejs连接oracle是比较麻烦的，不像使用mysql，Mogondb，redis等有相当丰富的库。就连官方提供的<a href="http://www.oracle.com/technetwork/database/database-technologies/scripting-languages/node_js/node-oracledb-doc-4241690.html" target="_blank" rel="noopener">oracledb</a>也在linux上安装的时候屡屡失败。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ol>
+<li><p>Nodejs v8.3.0  —&gt; <a href="https://npm.taobao.org/mirrors/node/v8.3.0/node-v8.3.0-linux-x64.tar.xz" target="_blank" rel="noopener">下载地址node-v8.3.0-linux-x64.tar.xz</a></p>
+<p>为什么指定8.3.0版本呢，经过多个版本Node在多个版本的linux上进行的多次测试，得出结论，8.3.0版本在安装oracledb的成功率最高，基本都能一次成功。</p>
+</li>
+<li><p>在oracle官网下载两个文件</p>
+<ul>
+<li>instantclient-basic-linux.x64-12.2.0.1.0.zip</li>
+<li>instantclient-sdk-linux.x64-12.2.0.1.0.zip</li>
+</ul>
+<p><a href="http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html" target="_blank" rel="noopener">oracle官网下载地址</a></p>
+</li>
+<li><p>检查gcc版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> gcc --version</span><br></pre></td></tr></table></figure>
+<p>如果版本低于4.7，则需要升级。</p>
+</li>
+</ol>
+<a id="more"></a>
+<h2 id="升级gcc版本"><a href="#升级gcc版本" class="headerlink" title="升级gcc版本"></a>升级gcc版本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> wget http://people.centos.org/tru/devtools-2/devtools-2.repo</span><br><span class="line"><span class="meta">#</span> mv devtools-2.repo /etc/yum.repos.d</span><br><span class="line"><span class="meta">#</span> yum install devtoolset-2-gcc devtoolset-2-binutils devtoolset-2-gcc-c++</span><br></pre></td></tr></table></figure>
+<p>更新软连接(逐条执行如下命令)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mv /usr/bin/gcc /usr/bin/gcc-4.4.7</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mv /usr/bin/g++ /usr/bin/g++-4.4.7</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mv /usr/bin/c++ /usr/bin/c++-4.4.7</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> ln -s /opt/rh/devtoolset-2/root/usr/bin/gcc /usr/bin/gcc</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> ln -s /opt/rh/devtoolset-2/root/usr/bin/c++ /usr/bin/c++</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> ln -s /opt/rh/devtoolset-2/root/usr/bin/g++ /usr/bin/g++</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> gcc --version</span><br></pre></td></tr></table></figure>
+<p>成功打印版本号，则安装成功。</p>
+<h2 id="安装Node"><a href="#安装Node" class="headerlink" title="安装Node"></a>安装Node</h2><ol>
+<li><p>创建文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sudo su</span><br><span class="line"><span class="meta">#</span> mkdir /usr/local/node</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将下载的node8.3移动到创建的文件夹中，并解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> xz -d node-v8.3.0-linux-x64.tar.xz</span><br><span class="line"><span class="meta">#</span> tar -xvf node-v8.3.0-linux-x64.tar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置软连接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> ln -s /usr/local/node/node-v8.3.0-linux-x64/bin/node /usr/bin/node</span><br><span class="line"><span class="meta">#</span> ln -s /usr/local/node/node-v8.3.0-linux-x64/bin/lib/node_modules/npm/bin/npm-cli.js /usr/bin/npm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试是否安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> node -v</span><br><span class="line"><span class="meta">#</span> npm -v</span><br></pre></td></tr></table></figure>
+<p>如果正确的打印了版本号，说明安装成功。</p>
+</li>
+</ol>
+<h2 id="设置oralce驱动环境"><a href="#设置oralce驱动环境" class="headerlink" title="设置oralce驱动环境"></a>设置oralce驱动环境</h2><ol>
+<li><p>创建文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sudo su</span><br><span class="line"><span class="meta">#</span> mkdir /usr/local/oracle</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将 <code>instantclient-basic-linux.x64-12.2.0.1.0.zip</code>与<code>instantclient-sdk-linux.x64-12.2.0.1.0.zip</code>两个文件移动到oracle目录下，解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> unzip instantclient-sdk-linux.x64-12.2.0.1.0.zip</span><br><span class="line"><span class="meta">#</span> unzip instantclient-basic-linux.x64-12.2.0.1.0.zip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入解压目录并设软连接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> ln -s libclntsh.so.12.1 libclntsh.so</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> vim /etc/profile</span><br></pre></td></tr></table></figure>
+<p>将下面这段命令粘贴到文件底部并保存</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export LD_LIBRARY_PATH=/usr/local/oracle/instantclient_12_2:$LD_LIBRARY_PATH  </span><br><span class="line">export OCI_LIB_DIR=/usr/local/oracle/instantclient_12_2  </span><br><span class="line">export OCI_INC_DIR=/usr/local/oracle/instantclient_12_2/sdk/include  </span><br><span class="line">export NLS_LANG=AMERICAN_AMERICA.UTF8</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启用环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> source /etc/profile</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>以上环境搭建完毕，我上面创建的文件夹名并非一定，大家可以随便起，只要与下面命令对应即可</p>
+</blockquote>
+<h2 id="安装oracledb"><a href="#安装oracledb" class="headerlink" title="安装oracledb"></a>安装oracledb</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> npm install oracledb</span><br></pre></td></tr></table></figure>
+<p>如果打印如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> oracledb@2.1.2 install /usr/local/whistle/oracle_test_sync/node_modules/oracledb</span><br><span class="line"><span class="meta">&gt;</span> node package/oracledbinstall.js</span><br><span class="line"></span><br><span class="line">oracledb Beginning installation</span><br><span class="line">oracledb Verifying installation</span><br><span class="line">oracledb Binary not found</span><br><span class="line">oracledb Continuing installation</span><br><span class="line">oracledb Oracledb installed</span><br><span class="line">oracledb Verifying installation</span><br><span class="line">oracledb Binary SHA matches SHA in SHASUMS256.txt</span><br><span class="line">oracledb </span><br><span class="line">oracledb ********************************************************************************</span><br><span class="line">oracledb ** Node-oracledb 2.1.2 installation complete for Node.js 8.3.0 (linux, x64)</span><br><span class="line">oracledb **</span><br><span class="line">oracledb ** To use the installed node-oracledb:</span><br><span class="line">oracledb ** - You must have 64-bit Oracle client libraries in LD_LIBRARY_PATH, or configured with ldconfig</span><br><span class="line">oracledb ** - If you do not already have libraries, install the Instant Client Basic or Basic Light package from </span><br><span class="line">oracledb **   http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html</span><br><span class="line">oracledb **</span><br><span class="line">oracledb ** Node-oracledb installation instructions: https://github.com/oracle/node-oracledb/blob/master/INSTALL.md</span><br><span class="line">oracledb ********************************************************************************</span><br><span class="line"></span><br><span class="line">npm notice created a lockfile as package-lock.json. You should commit this file.</span><br><span class="line">npm WARN oracle_test_sync@1.0.0 No description</span><br><span class="line">npm WARN oracle_test_sync@1.0.0 No repository field.</span><br><span class="line"></span><br><span class="line">+ oracledb@2.1.2</span><br><span class="line">added 1 package in 16.53s</span><br></pre></td></tr></table></figure>
+<p>那么恭喜你，安装完毕，可以去愉快的写代码了！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    柴旭红
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.chaixuhong.com/article/node-oracledb安装.html" title="linux下nodejs安装oracle驱动">http://www.chaixuhong.com/article/node-oracledb安装.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Node/" rel="tag"># Node</a>
+          
+            <a href="/tags/Oracle/" rel="tag"># Oracle</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/article/移动端1px边框问题.html" rel="next" title="解决移动端boder边框1px渲染成2px的问题">
+                <i class="fa fa-chevron-left"></i> 解决移动端boder边框1px渲染成2px的问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/touxiang.jpg"
+               alt="柴旭红" />
+          <p class="site-author-name" itemprop="name">柴旭红</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              推荐阅读
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.icafebolger.com/" title="爱咖啡" target="_blank">爱咖啡</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.80iter.com/" title="80iter" target="_blank">80iter</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ruanyifeng.com/blog/" title="阮一峰" target="_blank">阮一峰</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级gcc版本"><span class="nav-number">3.</span> <span class="nav-text">升级gcc版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Node"><span class="nav-number">4.</span> <span class="nav-text">安装Node</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置oralce驱动环境"><span class="nav-number">5.</span> <span class="nav-text">设置oralce驱动环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装oracledb"><span class="nav-number">6.</span> <span class="nav-text">安装oracledb</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  <span class="author" itemprop="copyrightHolder">柴旭红</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  
+  <span itemprop="copyrightYear">2018</span>
+  &copy; 京ICP备17035556号-1  2017 - 
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytadSTJb';
+      var conf = 'prod_bb0ce13a3d85348654e61346d4eab537';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("g4Jwd29BBXOqQdqfOLu0at8p-gzGzoHsz", "2S5j3Il4eN7SQSEJTQf4rCIN");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

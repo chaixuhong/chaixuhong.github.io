@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Javascript," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="书写青春" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="语法类 用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。  123console.log(b);var b=&quot;hi!&quot;;//运行后不会报错，打印出 &quot;undefined&quot; 其实运行时是这样的： 123var b;console.log(b);b=&quot;hi!&quot;; 由于变量提升">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javacript容易遗漏，也容易被面试官为难的点">
+<meta property="og:url" content="http://www.chaixuhong.com/article/javacript学习散记.html">
+<meta property="og:site_name" content="书写青春">
+<meta property="og:description" content="语法类 用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。  123console.log(b);var b=&quot;hi!&quot;;//运行后不会报错，打印出 &quot;undefined&quot; 其实运行时是这样的： 123var b;console.log(b);b=&quot;hi!&quot;; 由于变量提升">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.chaixuhong.com/images/js学习散记/base/01.png">
+<meta property="og:image" content="http://www.chaixuhong.com/images/js学习散记/base/02.png">
+<meta property="og:updated_time" content="2017-08-11T07:27:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javacript容易遗漏，也容易被面试官为难的点">
+<meta name="twitter:description" content="语法类 用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。  123console.log(b);var b=&quot;hi!&quot;;//运行后不会报错，打印出 &quot;undefined&quot; 其实运行时是这样的： 123var b;console.log(b);b=&quot;hi!&quot;; 由于变量提升">
+<meta name="twitter:image" content="http://www.chaixuhong.com/images/js学习散记/base/01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.chaixuhong.com/article/javacript学习散记.html"/>
+
+
+
+
+
+  <title>javacript容易遗漏，也容易被面试官为难的点 | 书写青春</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7c989efa57a6fe2f80045273a0053e11";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">书写青春</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">生活点滴</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.chaixuhong.com/article/javacript学习散记.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="柴旭红">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="书写青春">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">javacript容易遗漏，也容易被面试官为难的点</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-21T00:00:00+08:00">
+                2017-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/article/javacript学习散记.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="article/javacript学习散记.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/article/javacript学习散记.html" class="leancloud_visitors" data-flag-title="javacript容易遗漏，也容易被面试官为难的点">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!--
+# 历史
+
++ 99年，ie5部署了XMLHttpRequest接口，从此javascript可以向服务器发送http请求，为ajax的诞生奠定了基础。
++ 2001年，Json格式诞生，目的是取代XML进行网页与服务器中间的数据交换。
++ 02年，Mozilla项目发布浏览器的第一版，之后改名为Firefox。
++ 03年，Safari浏览器诞生。
++ 05年，ajax（asynchronous javascript and XML）诞生，web2.0时代来临。
++ 06年，jQuery诞生。
++ 08年，V8编译器诞生。很大程度的提升了javascript的运行速度和性能。
++ 09年，NodeJs诞生。标志着javascript可以用于服务器端编程。
++ 2010年，npm诞生，javascript进入模块化开发的时代。
++ 12年，单页应用崛起，AngularJs出现。
++ 13年，Facebook发布了React，引入JSX语法。
++ 15年6月，ES6正式发布，定名为“ECMAScript 2015 标准”，JS诞生20年。
++ 2016年6月，《ECMAScript 2016 标准》发布
+-->
+<h1 id="语法类"><a href="#语法类" class="headerlink" title="语法类"></a>语法类</h1><ul>
+<li><p>用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。</p>
+<p><img src="/images/js学习散记/base/01.png" style="width:50%;"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(b);</span><br><span class="line"><span class="keyword">var</span> b=<span class="string">"hi!"</span>;</span><br><span class="line"><span class="comment">//运行后不会报错，打印出 "undefined"</span></span><br></pre></td></tr></table></figure>
+<p>其实运行时是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b;</span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br><span class="line">b=<span class="string">"hi!"</span>;</span><br></pre></td></tr></table></figure>
+<p>由于变量提升导致的，如果不用“var”的方式声明，则不会出现，且上诉编写的代码无法运行，会报错。</p>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>区块不构成单独的作用域，与不使用区块的情况没有任何区别</p>
+<p><img src="/images/js学习散记/base/02.png" style="width:50%;"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  b=<span class="string">"hi!"</span>;<span class="comment">//在区块内定义了一个变量</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(b);<span class="comment">//hi  在外部也能将其打印出来</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><em>ps:但凡学过一种高级语言的的童鞋都知道，局部变量与全局变量的区别，在js中，区块是无法定义局部变量的，所以以后建议童鞋们，尽量避免相同名称的变量命名，会有意想不到的坑出现……</em></p>
+<blockquote>
+<p><strong>问题1:下面js代码运行时会不会报错？为什么？</strong>  </p>
+</blockquote>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(tmp);</span><br><span class="line">&#125;</span><br><span class="line">   <span class="keyword">var</span> tmp=<span class="string">"hello world!"</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>问题2:下面js代码运行后打印出了值，为什么？</strong>  </p>
+</blockquote>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">  tmp=<span class="string">"hello world!"</span>;</span><br><span class="line">&#125;</span><br><span class="line">   <span class="built_in">console</span>.log(tmp);</span><br><span class="line">   <span class="comment">//hello world!</span></span><br></pre></td></tr></table></figure>
+<h1 id="数据类型类"><a href="#数据类型类" class="headerlink" title="数据类型类"></a>数据类型类</h1><ul>
+<li><p>javascript数据类型有六种：</p>
+<ol>
+<li>数值(number) ：整数小数  –&gt;原始类型</li>
+<li>布尔(boolean) ： true false  –&gt;原始类型</li>
+<li>字符串(string) ：“Aasdasd”  –&gt;原始类型</li>
+<li>undefined ：未定义  –&gt;特殊值</li>
+<li>null ：没有值  –&gt;特殊值</li>
+<li>object ：对象 –&gt; 各种原始类型值组合起来的集合（合成类型）</li>
+</ol>
+</li>
+<li><p>对象又分为三种：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> object = &#123;&#125;; <span class="keyword">var</span> object = <span class="keyword">new</span> <span class="built_in">Object</span>(); <span class="comment">//狭义的对象</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(); <span class="comment">//数组也是对象</span></span><br><span class="line"><span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125; ; <span class="comment">//函数也是对象</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>  <em>以上三种统称为广义的对象</em></p>
+<ol>
+<li>狭义的对象与数组是两种不同的原始类型数据的组合方式，而函数则是处理数据的方法。</li>
+<li>Javascript把函数当成一种数据类型，可以像其他数据类型一样，进行赋值和传递，体现了Javascript的“函数式”语言的本质。</li>
+</ol>
+<ul>
+<li><p>布尔值  </p>
+<p>除了以下六个值在自动转换为布尔值时，被认为是false，其他都视为true。    </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">undefined</span>  </span><br><span class="line"><span class="literal">null</span>  </span><br><span class="line"><span class="string">''</span>  </span><br><span class="line"><span class="string">""</span>  </span><br><span class="line"><span class="literal">NaN</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<!-- **注意**：空数组([]),空对象({})对应的布尔值是：true  --> 
+</li>
+</ul>
+<blockquote>
+<p>问题1：以下代码输出结果是什么，为什么？</p>
+</blockquote>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">3</span>,b=<span class="number">2</span>,c=<span class="string">''</span>,d=[];</span><br><span class="line"><span class="keyword">if</span>(c)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"reslut1="</span>+(a+b));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(d)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"reslut2="</span>+(b-a));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h2><ul>
+<li><p>在Javascript内部，所有数字都是以64位浮点数形式存储的，整数也是，所以1与1.0是同一个数，不仅仅是值相同。所有的数字，都是   浮点数，在底层就没有整数。要注意的是：由于浮点数不是精确的值，导致小数会出现各种问题，比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">0.3</span>/<span class="number">0.1</span>)</span><br><span class="line"><span class="comment">//2.9999999999999996</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0.1</span>+<span class="number">0.2</span>===<span class="number">0.3</span>) </span><br><span class="line"><span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>浮点数  </p>
+<ol>
+<li>组成：</li>
+</ol>
+<blockquote>
+<p>第1位：正负位，0表示正数，1表示负数。<br>第2位到第12位：指数位，存储指数的部分。<br>第13位到第64位：小数位，存储小数部分，即有效数字。  </p>
+</blockquote>
+<ol start="2">
+<li>格式：<br><code>(-1)^正负位 * 1.xxxxx (小数位) * 2^指数位</code></li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    柴旭红
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.chaixuhong.com/article/javacript学习散记.html" title="javacript容易遗漏，也容易被面试官为难的点">http://www.chaixuhong.com/article/javacript学习散记.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/article/gulp.js--好用的静态文件打包工具.html" rel="next" title="gulp.js--好用的静态文件打包工具">
+                <i class="fa fa-chevron-left"></i> gulp.js--好用的静态文件打包工具
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/article/linux下安装nginx.html" rel="prev" title="linux下安装nginx">
+                linux下安装nginx <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/touxiang.jpg"
+               alt="柴旭红" />
+          <p class="site-author-name" itemprop="name">柴旭红</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              推荐阅读
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.icafebolger.com/" title="爱咖啡" target="_blank">爱咖啡</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.80iter.com/" title="80iter" target="_blank">80iter</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ruanyifeng.com/blog/" title="阮一峰" target="_blank">阮一峰</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#语法类"><span class="nav-number">1.</span> <span class="nav-text">语法类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型类"><span class="nav-number">2.</span> <span class="nav-text">数据类型类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数值"><span class="nav-number">2.1.</span> <span class="nav-text">数值</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  <span class="author" itemprop="copyrightHolder">柴旭红</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  
+  <span itemprop="copyrightYear">2018</span>
+  &copy; 京ICP备17035556号-1  2017 - 
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytadSTJb';
+      var conf = 'prod_bb0ce13a3d85348654e61346d4eab537';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("g4Jwd29BBXOqQdqfOLu0at8p-gzGzoHsz", "2S5j3Il4eN7SQSEJTQf4rCIN");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

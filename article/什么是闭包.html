@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Javascript," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="书写青春" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="今天我想有别于其他作者，以密室逃脱主题来聊聊闭包这个鬼东西，made！当初就是他卡住了我进阿里的路，面试官嫌我技术深度不够，理解不透彻！功夫不负有心人！用了两天时间，本大神终于把这个闭包搞的，一塌糊涂了。。。额！来，来，来！观众老爷们，跟我到小黑屋里聊聊，我们从变量-&amp;gt;作用域-&amp;gt;闭包这个姿势搞下，看本大神实力把观众老爷们，将这个闭包问题，说的彻彻底底，彻底迷糊了~_~! 变量在js中，">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="闭包是什么？密室逃脱，哇擦！有人在马桶下偷窥！">
+<meta property="og:url" content="http://www.chaixuhong.com/article/什么是闭包.html">
+<meta property="og:site_name" content="书写青春">
+<meta property="og:description" content="今天我想有别于其他作者，以密室逃脱主题来聊聊闭包这个鬼东西，made！当初就是他卡住了我进阿里的路，面试官嫌我技术深度不够，理解不透彻！功夫不负有心人！用了两天时间，本大神终于把这个闭包搞的，一塌糊涂了。。。额！来，来，来！观众老爷们，跟我到小黑屋里聊聊，我们从变量-&amp;gt;作用域-&amp;gt;闭包这个姿势搞下，看本大神实力把观众老爷们，将这个闭包问题，说的彻彻底底，彻底迷糊了~_~! 变量在js中，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-28T07:34:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="闭包是什么？密室逃脱，哇擦！有人在马桶下偷窥！">
+<meta name="twitter:description" content="今天我想有别于其他作者，以密室逃脱主题来聊聊闭包这个鬼东西，made！当初就是他卡住了我进阿里的路，面试官嫌我技术深度不够，理解不透彻！功夫不负有心人！用了两天时间，本大神终于把这个闭包搞的，一塌糊涂了。。。额！来，来，来！观众老爷们，跟我到小黑屋里聊聊，我们从变量-&amp;gt;作用域-&amp;gt;闭包这个姿势搞下，看本大神实力把观众老爷们，将这个闭包问题，说的彻彻底底，彻底迷糊了~_~! 变量在js中，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.chaixuhong.com/article/什么是闭包.html"/>
+
+
+
+
+
+  <title>闭包是什么？密室逃脱，哇擦！有人在马桶下偷窥！ | 书写青春</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7c989efa57a6fe2f80045273a0053e11";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">书写青春</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">生活点滴</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.chaixuhong.com/article/什么是闭包.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="柴旭红">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="书写青春">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">闭包是什么？密室逃脱，哇擦！有人在马桶下偷窥！</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T00:00:00+08:00">
+                2018-01-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/article/什么是闭包.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="article/什么是闭包.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/article/什么是闭包.html" class="leancloud_visitors" data-flag-title="闭包是什么？密室逃脱，哇擦！有人在马桶下偷窥！">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天我想有别于其他作者，以密室逃脱主题来聊聊闭包这个鬼东西，made！当初就是他卡住了我进阿里的路，面试官嫌我技术深度不够，理解不透彻！功夫不负有心人！用了两天时间，本大神终于把这个<strong>闭包</strong>搞的，一塌糊涂了。。。额！<br>来，来，来！观众老爷们，跟我到小黑屋里聊聊，我们从<strong>变量</strong>-&gt;<strong>作用域</strong>-&gt;<strong>闭包</strong>这个姿势搞下，看本大神实力把观众老爷们，将这个闭包问题，说的彻彻底底，彻底迷糊了~_~!</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>在js中，变量就分为两种：全局变量和局部变量</p>
+<ul>
+<li>全局变量：在全局起作用的变量，<strong>作用域</strong>为全局</li>
+<li>局部变量：在局部起作用的变量，<strong>作用域</strong>为局部</li>
+</ul>
+<p>那么在js中，如何区别两者呢？js中，只有一种方法来声明局部变量，就是在方法体中，function里面；js没有java或c中的块级作用域的概念。简单说就是，<strong>在function里面的就是局部变量，在外面的就是全局变量</strong>。可以把function想象成电影里面那种密室，从里面可以看到外面，从外面看墙是镜子，只能看到自己。但在里面，既能知道里面有啥，还知道外面有啥。</p>
+<p>其实还有一种特殊情况，局部变量中的局部变量，就是function嵌套；密室套密室，外层密室看内层密室，同样墙是面镜子，只能看到自己。</p>
+<p>在ES6之前，<strong>只有</strong>函数能产生局部变量，函数就是小密室，它能把内部的东西隐藏起来，不被外部访问到；所以，在函数内部就是局部变量，在外部就是全局变量。ES6之后增加了像java一样的块级作用域，这在之前是没有的，有兴趣的可以去了解下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">//Uncaught ReferenceError: a is not defined</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	a被声明在函数中，所以它是局部变量，在外部访问会报"ReferenceError"错误</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>围绕<strong>变量</strong>就出现了作用域，作用域链两个东西</p>
+</blockquote>
+<a id="more"></a>
+<p>###作用域</p>
+<ul>
+<li><strong>定义</strong>：程序源代码中定义这个变量的区域； <em>（《js权威指南》一书中的描述）</em></li>
+<li><strong>白话说</strong>：就是你定义的变量在哪个区域起作用，就是这个变量的作用域；</li>
+<li><strong>打比方</strong>：把你比作变量，你现在所在的密室，能看到所有本密室内和本密室外的东西，但如果你所在密室里，还有一个小密室，你是看不到的，可能里面有人在偷窥你，我擦！我给你打一电话，问你，你能看到啥呀，你德比德比告诉了我密室里有啥，密室外有啥；但你没办法告诉我你密室里的小密室里有啥，你就能发挥这么点作用，这就是你的作用域。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> aa = <span class="number">1</span>;</span><br><span class="line">  	<span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> bb = <span class="number">2</span>;</span><br><span class="line">      	<span class="built_in">console</span>.log(<span class="string">'aa='</span>+aa+<span class="string">';bb='</span>+bb);</span><br><span class="line">      	<span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> cc = <span class="number">3</span> ;</span><br><span class="line">          	<span class="built_in">console</span>.log(<span class="string">'aa='</span>+aa+<span class="string">';bb='</span>+bb+<span class="string">';cc='</span>+cc);</span><br><span class="line">        &#125;</span><br><span class="line">      	c();<span class="comment">//执行c</span></span><br><span class="line">    &#125;</span><br><span class="line">  	b();<span class="comment">//执行b</span></span><br><span class="line">&#125;</span><br><span class="line">a();<span class="comment">//aa=1;bb=2  ，这是执行b方法打印出的</span></span><br><span class="line">	<span class="comment">//aa=1;bb=2;cc=3   ，这是执行c方法打印出的</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	可以看到b和c都可以访问aa，c可以访问bb,但是a和b是不能访问cc的，大家可以试下。像上面说的，只能从里往外看</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>###作用域链（scope chain）</p>
+<ul>
+<li><strong>百度百科</strong>：作用域链决定了哪些数据能被函数访问。当一个函数创建后，它的作用域链，会被“创建此函数的-作用域中-可访问的数据对象”，填充。</li>
+<li><strong>白话说</strong>：就是你使用的变量，在哪个作用域里，去沿着一条线索，一条链去找，从局部作用域一级一级往上找，直到找到最上层，全局作用域，这个线索就是作用域链。</li>
+<li><strong>打比方</strong>：接着你还是个变量，我把你var出来，把你var在里各种嵌套的某一层密室中，现在我有其中某层密室的钥匙，我想用你，但是又不知道你在哪？那么开始找，从我所在的密室开始往外一层一层的找你，只能往外，往内我不知道里面有啥也没钥匙，一直找到最外层，直到找到你。这一层一层密室，是一个个的function，上面说了，每个密室每个function里是一个单独的作用域，那么这样一层层的找你，所走过的路，所经历的域链起来，就是作用域链。</li>
+</ul>
+<blockquote>
+<p>聊到这，相信观众老爷们应该知道变量，作用域，作用域链是个啥了吧，啥？还不知道？脸上笑眯眯，心里mmp，啥也不说了，找我单聊吧！</p>
+</blockquote>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>终于到了今天要聊的重点了，啰嗦了一大堆，闭包是个啥？！等等，让我按套路出牌</p>
+<ul>
+<li><p>定义：</p>
+<ol>
+<li><strong>闭包</strong>就是能够读取其他函数内部变量的函数，就是将函数内部和函数外部连接起来的一座桥梁；（阮一峰）</li>
+<li><strong>闭包</strong>是指有权访问另一个函数作用域中的变量函数；（《javascript高级程序设计》）</li>
+<li>从技术的角度讲，所有的JavaScript函数都是<strong>闭包</strong>：它们都是对象，它们都关联到作用域链；《javascript权威指南》</li>
+<li><strong>闭包</strong>（<em>Closure</em>）是<strong>词法闭包</strong>（<em>Lexical Closure</em>）的简称，是引用了自由变量的函数。这个被引用的自由变量将和这个函数一同存在，即使已经离开了创造它的环境也不例外；（维基百科）</li>
+<li>当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行；（《你不知道的javascript》）</li>
+</ol>
+<blockquote>
+<p>为了写一遍假装很严谨、不误导大家的文章，我用了两天时间，查阅了部分大神的博客关于闭包的文章、查阅了多本javascript排名靠前的书籍，把其中一些定义给大家丢出来。大家对比下便可发现，不同的人对闭包这个东西，理解不太相同。    </p>
+</blockquote>
+</li>
+<li><p><strong>吐槽</strong>：一些大神博客、一些入门级js书籍都对闭包这个概念说的很简单，说的很浅。可能出于对初学者的友好考虑，初学者开始不需要理解太深，甚至深了也理解不了。所以会出现这样的情况。        </p>
+</li>
+<li><p><strong>引言</strong>：引用知乎上一位大神的话如下：</p>
+<blockquote>
+<p>为了通俗而通俗，为了容易理解而理解，只會使得读者同样流于表面，自以为理解，实际上根本不懂。一旦难度稍微加大，旧有的思維不再好用，就难以提升了。</p>
+<p>反之一開始就接受抽象思維的训练而不是套用旧有的思維，雖然一開始艰难，而後必會突飞猛進。</p>
+<p>建议楼主不要看任何低水平的「科普」文章，直接看英文維基百科、MDN、ECMAScript 草案比較好。</p>
+<p>真正的入門往往就是在一瞬間，過了這道坎，你就入門了。盲目地看再多低水平的文章，照樣毫無幫助。    </p>
+</blockquote>
+<p>把这几天扣的这些个博客和书籍，再加上我的理解说下。我的理解是，闭包不能定义为一个具体的概念或函数，不完全同意阮大神的说法，我认为闭包是满足一些条件的状态，描述的是一种状态，而非是什么什么函数。满足以下两个条件，即形成闭包这个状态：</p>
+<ol>
+<li>函数有嵌套   —&gt;函数</li>
+<li>内部函数使用了外部函数的变量 —&gt; 环境</li>
+</ol>
+<p>函数加环境才形成闭包。函数定义时，记住了它所在的环境，也就是绑定了它<strong>当时所在</strong>作用域链。这时形成闭包状态；闭包有以下几个特性：</p>
+<ol>
+<li>可以通过内层函数访问函数内的变量：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'a='</span>+a);</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = outer();</span><br><span class="line">b();<span class="comment">// a=1</span></span><br></pre></td></tr></table></figure>
+<p><strong>白话说</strong>：我们上面聊作用域的时候说过，每一个function会创建一个独立的作用域，每一个function就是一个小密室，我站在最外面是无法知道密室里面有啥的，但是你在<code>inner</code>这个密室里，<code>var b = outer()</code>给我返回了你的联系方式，然后我就可以通过你，知道你作用域内的所有东西。</p>
+<ol start="2">
+<li>外层函数活动对象与作用域本该被垃圾回收，但由于被内层函数引用，持久化在内存中，不会销毁。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'a='</span>+a++);</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = outer();</span><br><span class="line">b();<span class="comment">// a=1</span></span><br><span class="line">b();<span class="comment">// a=2</span></span><br><span class="line">b();<span class="comment">// a=3</span></span><br><span class="line">b();<span class="comment">// a=4</span></span><br></pre></td></tr></table></figure>
+<p><strong>白话说</strong>：如果不是闭包，一般函数在执行完以后，它本身包括它的执行上下文，作用域都是要被GC回收的，但是通过上面的例子可以看出，这个<code>a</code>变量是<code>outer</code>这个函数的，他早已执行完了，正常它应该被销毁的，但是我们在反复调用<code>b()</code>，发现a的确一直存在。假设我就是<code>b</code>，你是<code>inner</code>,我一直拿着你的联系方式，我需要你的时候，必须能联系上你，但你也不知道我什么时候会联系你，所以你是不能被干掉的，包括你的整个作用域。</p>
+<p><strong>注</strong>：这个特性是闭包最大的特点，也是最大的缺点，闭包所引用的变量都在内存中不被销毁，造成<strong>内存泄漏</strong>（无法释放已申请的内存），一次内存泄露危害可以忽略，但内存泄露堆积后果很严重，最终结果内存溢出，进程死掉，程序挂掉，甚至机器宕掉。</p>
+<h3 id="闭包加循环"><a href="#闭包加循环" class="headerlink" title="闭包加循环"></a>闭包加循环</h3><p>这块单独拿出来说下，闭包加循环有些特殊，我初学js时遇到一个坑</p>
+</li>
+<li><p><strong>js从入门到放弃</strong></p>
+<p>功能需求：通过书名循环请求某网站，将书的信息取回来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getBookData</span>(<span class="params">books</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> booksArr = books;<span class="comment">//传入一个书名的数组，</span></span><br><span class="line">  	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i&lt;booksArr.length ; i++)&#123; <span class="comment">//循环</span></span><br><span class="line">        request.get(booksArr[i],<span class="function"><span class="keyword">function</span>(<span class="params">err,res,json</span>)</span>&#123; <span class="comment">//请求</span></span><br><span class="line">          	<span class="comment">//【1】</span></span><br><span class="line">            <span class="keyword">if</span> (response.statusCode == <span class="number">200</span>)&#123; <span class="comment">//当返回状态码200请求成功</span></span><br><span class="line">                <span class="built_in">console</span>.log(json);<span class="comment">//输出书挡信息</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个问题在我js初级时，在公司写的业务（<em>上面这段代码是直接运行不了的，我只想表达意思，截取了部分</em>），我写的这段代码把我坑够呛。得到的结果跟我想的完全不一样。假设我要获取10本书的信息，最后得到的10本书，都是最后一本，10条信息一模一样，都是最后一本书的信息。我就理解不了，在上面【1】的位置我写了一句<code>console.log(booksArr[i])</code>，发现给我输出10个<code>booksArr[9]</code>。我擦，mmp！我请求了10遍<code>bookArr[9]</code>呗。在我当时的js水平，我最后只能理解为，js是异步的，由于request是去执行<code>I／O</code>操作去了，for循环又速度快，一下i 就变成最后一个。。。这样的想法明显经不起推敲，先自己骗自己。。。因为水平有限，暂时理解不了</p>
+</li>
+<li><p><strong>终于等到你</strong></p>
+<p>我们看下上述问题一个简化的例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span> ; i&lt;<span class="number">10</span> ; i++)&#123;<span class="comment">//循环</span></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//模拟请求</span></span><br><span class="line">            <span class="built_in">console</span>.log(i)</span><br><span class="line">        &#125;,<span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">test();<span class="comment">//（10)10 十个十</span></span><br></pre></td></tr></table></figure>
+<p>将setTimeout函数的时间1000改为0，结果还是一样的。10个10；将上面循环拆开，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span> ; </span><br><span class="line">   &#123;</span><br><span class="line">        <span class="keyword">var</span> i=<span class="number">1</span>;<span class="comment">//在for循环结束后i=10</span></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//模拟请求</span></span><br><span class="line">            <span class="built_in">console</span>.log(i)</span><br><span class="line">        &#125;,<span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">   &#123;</span><br><span class="line">     	<span class="keyword">var</span> i=<span class="number">2</span>;<span class="comment">//在for循环结束后i=10</span></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//模拟请求</span></span><br><span class="line">            <span class="built_in">console</span>.log(i)</span><br><span class="line">        &#125;,<span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">   ...<span class="comment">//一共10个</span></span><br><span class="line">   &#123;</span><br><span class="line">     	<span class="keyword">var</span> i=<span class="number">9</span>;<span class="comment">//在for循环结束后i=10</span></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//模拟请求</span></span><br><span class="line">            <span class="built_in">console</span>.log(i)</span><br><span class="line">        &#125;,<span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//以上是for循环</span></span><br><span class="line">	i=<span class="number">10</span>;<span class="comment">//i=10 for 循环结束</span></span><br><span class="line">&#125;</span><br><span class="line">test();<span class="comment">//（10)10 十个十</span></span><br></pre></td></tr></table></figure>
+<p>结果一样的，当这样拆开后相信大家就明白为什么了，js没有块级作用域的概念，使用for循环，循环定义了10个块，并且在块内保存了i变量，但是由于没有块级作用域，i都会被最后的i所覆盖。js异步设计就是这样，只要出现延时函数，哪怕0秒，只要出现i/o操作，那么会跳过往下执行，等待延时或i/o结束再回来执行内部。</p>
+<blockquote>
+<p>es6提出的块级作用域，只要用let定义的变量。所以上述问题只需要将var改为let即可避免。</p>
+</blockquote>
+<p>使用函数级作用域保存每个i也可以解决</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span> ; i&lt;<span class="number">10</span> ; i++)&#123;<span class="comment">//循环</span></span><br><span class="line">       (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;<span class="comment">//只用匿名函数将每一个i传入并保存独立作用域</span></span><br><span class="line">         setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//模拟请求</span></span><br><span class="line">            <span class="built_in">console</span>.log(i)</span><br><span class="line">        &#125;,<span class="number">1000</span>)&#125;)(i)<span class="comment">//立即执行函数写法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">test();<span class="comment">//（10)10 十个十</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    柴旭红
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.chaixuhong.com/article/什么是闭包.html" title="闭包是什么？密室逃脱，哇擦！有人在马桶下偷窥！">http://www.chaixuhong.com/article/什么是闭包.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/article/imooc3-3.html" rel="next" title="七夕项目js实现-3-3">
+                <i class="fa fa-chevron-left"></i> 七夕项目js实现-3-3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/article/原型链.html" rel="prev" title="原型链">
+                原型链 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/touxiang.jpg"
+               alt="柴旭红" />
+          <p class="site-author-name" itemprop="name">柴旭红</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              推荐阅读
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.icafebolger.com/" title="爱咖啡" target="_blank">爱咖啡</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.80iter.com/" title="80iter" target="_blank">80iter</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ruanyifeng.com/blog/" title="阮一峰" target="_blank">阮一峰</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包"><span class="nav-number">2.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包加循环"><span class="nav-number">3.</span> <span class="nav-text">闭包加循环</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  <span class="author" itemprop="copyrightHolder">柴旭红</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  
+  <span itemprop="copyrightYear">2018</span>
+  &copy; 京ICP备17035556号-1  2017 - 
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytadSTJb';
+      var conf = 'prod_bb0ce13a3d85348654e61346d4eab537';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("g4Jwd29BBXOqQdqfOLu0at8p-gzGzoHsz", "2S5j3Il4eN7SQSEJTQf4rCIN");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

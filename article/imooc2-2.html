@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="imooc,七夕言情," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="书写青春" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="2-2页面之间的卷滚切换效果前言​    本节主要用到了css3的一个过渡属性，做本节之前可以上w3c去看下css3的transform用法，其实也没什么高深的东西。​    有视频的课大家直接看视频，我直接对着没视频的课代码撸起！​    请注意章节，与慕课上的章节一一对应。慕课地址：传送门 走你！">
+<meta name="keywords" content="imooc,七夕言情">
+<meta property="og:type" content="article">
+<meta property="og:title" content="七夕项目js实现-2-2">
+<meta property="og:url" content="http://www.chaixuhong.com/article/imooc2-2.html">
+<meta property="og:site_name" content="书写青春">
+<meta property="og:description" content="2-2页面之间的卷滚切换效果前言​    本节主要用到了css3的一个过渡属性，做本节之前可以上w3c去看下css3的transform用法，其实也没什么高深的东西。​    有视频的课大家直接看视频，我直接对着没视频的课代码撸起！​    请注意章节，与慕课上的章节一一对应。慕课地址：传送门 走你！">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-03T14:41:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="七夕项目js实现-2-2">
+<meta name="twitter:description" content="2-2页面之间的卷滚切换效果前言​    本节主要用到了css3的一个过渡属性，做本节之前可以上w3c去看下css3的transform用法，其实也没什么高深的东西。​    有视频的课大家直接看视频，我直接对着没视频的课代码撸起！​    请注意章节，与慕课上的章节一一对应。慕课地址：传送门 走你！">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.chaixuhong.com/article/imooc2-2.html"/>
+
+
+
+
+
+  <title>七夕项目js实现-2-2 | 书写青春</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7c989efa57a6fe2f80045273a0053e11";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">书写青春</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">生活点滴</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.chaixuhong.com/article/imooc2-2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="柴旭红">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="书写青春">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">七夕项目js实现-2-2</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-22T00:00:00+08:00">
+                2017-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/article/imooc2-2.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="article/imooc2-2.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/article/imooc2-2.html" class="leancloud_visitors" data-flag-title="七夕项目js实现-2-2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="2-2页面之间的卷滚切换效果"><a href="#2-2页面之间的卷滚切换效果" class="headerlink" title="2-2页面之间的卷滚切换效果"></a>2-2页面之间的卷滚切换效果</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    本节主要用到了css3的一个过渡属性，做本节之前可以上w3c去看下css3的transform用法，其实也没什么高深的东西。<br>​    有视频的课大家直接看视频，我直接对着没视频的课代码撸起！<br>​    请注意章节，与慕课上的章节一一对应。慕课地址：<a href="http://www.imooc.com/learn/453" target="_blank" rel="noopener">传送门</a> 走你！</p>
+<a id="more"></a>
+<h2 id="撸代码"><a href="#撸代码" class="headerlink" title="撸代码"></a>撸代码</h2><ol>
+<li><p><strong>使用css3属性版本</strong></p>
+<p><strong>贴出js代码</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="comment">// 获取第一个子节点</span></span><br><span class="line">    <span class="keyword">var</span> container = <span class="built_in">document</span>.getElementById(<span class="string">'content'</span>);</span><br><span class="line">    <span class="comment">// 获取ul</span></span><br><span class="line">    <span class="keyword">var</span> element = container.getElementsByClassName(<span class="string">'content-wrap'</span>);</span><br><span class="line">    <span class="comment">// 获取li</span></span><br><span class="line">    <span class="keyword">var</span> slides = element[<span class="number">0</span>].getElementsByTagName(<span class="string">"li"</span>);</span><br><span class="line">    <span class="comment">// 获取容器尺寸 offset属性，获取自身的宽高</span></span><br><span class="line">    <span class="keyword">var</span> width = container.offsetWidth;</span><br><span class="line">    <span class="keyword">var</span> height = container.offsetHeight;</span><br><span class="line">    <span class="comment">// 设置ul总宽度</span></span><br><span class="line">    element[<span class="number">0</span>].style.width = (width * slides.length) + <span class="string">'px'</span>;</span><br><span class="line">    element[<span class="number">0</span>].style.height = height + <span class="string">'px'</span>;</span><br><span class="line">    <span class="comment">// 设置每一个li的尺寸</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; slides.length; i++) &#123;</span><br><span class="line">      slides[i].style.height = height + <span class="string">'px'</span>;</span><br><span class="line">      slides[i].style.width = width + <span class="string">'px'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> button = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'button'</span>);</span><br><span class="line">    <span class="comment">// 绑定一个事件，触发通过</span></span><br><span class="line">    button[<span class="number">0</span>].addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 在5秒的时间内，移动X的位置，为2个页面单位</span></span><br><span class="line">      element[<span class="number">0</span>].style.transition = <span class="string">'all 5000ms linear'</span>;</span><br><span class="line">      element[<span class="number">0</span>].style.transform = <span class="string">'translatex(-'</span> + width * <span class="number">2</span> + <span class="string">'px)'</span></span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其实与上一节课程对比，只是加了一个button的点击事件。在事件触发后，给ul标签加一个过渡效果。<br><code>transition</code>：接收四个参数:</p>
+<p>​    1.指定过渡的css属性；<br>​    2.过渡时间；<br>​    3.过渡效果(匀速，先快后慢等)；<br>​    4.过渡开始时间。<br><code>transform</code>：要执行的动画效果，一堆方法，自己看w3c吧。这里用到的是X轴平移方法<code>translateX()</code></p>
+</li>
+<li><p><strong>使用js+定时器版本</strong></p>
+<p><strong>送上代码</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="comment">// 获取第一个子节点</span></span><br><span class="line">    <span class="keyword">var</span> container = <span class="built_in">document</span>.getElementById(<span class="string">'content'</span>);</span><br><span class="line">    <span class="comment">// 获取ul</span></span><br><span class="line">    <span class="keyword">var</span> element = container.getElementsByClassName(<span class="string">'content-wrap'</span>);</span><br><span class="line">    <span class="comment">// 获取li</span></span><br><span class="line">    <span class="keyword">var</span> slides = element[<span class="number">0</span>].getElementsByTagName(<span class="string">"li"</span>);</span><br><span class="line">    <span class="comment">// 获取容器尺寸 offset属性，获取自身的宽高</span></span><br><span class="line">    <span class="keyword">var</span> width = container.offsetWidth;</span><br><span class="line">    <span class="keyword">var</span> height = container.offsetHeight;</span><br><span class="line">    <span class="comment">// 设置ul总宽度</span></span><br><span class="line">    element[<span class="number">0</span>].style.width = (width * slides.length) + <span class="string">'px'</span>;</span><br><span class="line">    element[<span class="number">0</span>].style.height = height + <span class="string">'px'</span>;</span><br><span class="line">    <span class="comment">// 设置每一个li的尺寸</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; slides.length; i++) &#123;</span><br><span class="line">      slides[i].style.height = height + <span class="string">'px'</span>;</span><br><span class="line">      slides[i].style.width = width + <span class="string">'px'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> button = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'button'</span>);</span><br><span class="line">    <span class="comment">// 绑定一个事件，触发通过</span></span><br><span class="line">    <span class="keyword">var</span> timer = <span class="literal">null</span>;</span><br><span class="line">    button[<span class="number">0</span>].addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 在5秒的时间内，移动X的位置，为2个页面单位</span></span><br><span class="line">      <span class="keyword">var</span> num = <span class="number">0</span></span><br><span class="line">      timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        num++;</span><br><span class="line">        <span class="keyword">if</span> (num &lt; width * <span class="number">2</span>) &#123;</span><br><span class="line">          element[<span class="number">0</span>].style.left = -num + <span class="string">'px'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">          clearInterval(timer);</span><br><span class="line">          timer = <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;, <span class="number">1</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>本节也没什么难点，就是让ul标签沿着x轴从左向右动起来。大家好好理解下。</p>
+<blockquote>
+<p>代码我已上传百度云盘，欢迎大家下载查看。。。<br>链接:<a href="http://pan.baidu.com/s/1nvt9Qsh" target="_blank" rel="noopener">http://pan.baidu.com/s/1nvt9Qsh</a>  密码:<code>pexw</code><br>如有疑问请在下方留言。。。</p>
+</blockquote>
+<blockquote>
+<p><strong>注</strong>：只对script内的内容作了修改。html，css与原文一致。</p>
+</blockquote>
+<p><strong>本节全部代码送上</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=utf-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>慕课七夕主题<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">      * &#123;</span></span><br><span class="line"><span class="undefined">        padding: 0;</span></span><br><span class="line"><span class="undefined">        margin: 0;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">      ul,</span></span><br><span class="line"><span class="undefined">      li &#123;</span></span><br><span class="line"><span class="undefined">        list-style-type: none;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">      /*主体部分*/</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">      #content &#123;</span></span><br><span class="line"><span class="undefined">        width: 100%;</span></span><br><span class="line"><span class="undefined">        height: 100%;</span></span><br><span class="line"><span class="undefined">        /* top: 20%;</span></span><br><span class="line"><span class="undefined">        left: 20%; */</span></span><br><span class="line"><span class="undefined">        overflow: hidden;</span></span><br><span class="line"><span class="undefined">        position: absolute;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">      .content-wrap &#123;</span></span><br><span class="line"><span class="undefined">        position: relative;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">      .content-wrap&gt;li &#123;</span></span><br><span class="line"><span class="undefined">        width: 100%;</span></span><br><span class="line"><span class="undefined">        height: 100%;</span></span><br><span class="line"><span class="undefined">        background: #CAE1FF;</span></span><br><span class="line"><span class="undefined">        color: red;</span></span><br><span class="line"><span class="undefined">        float: left;</span></span><br><span class="line"><span class="undefined">        overflow: hidden;</span></span><br><span class="line"><span class="undefined">        position: relative;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">      li:nth-child(2) &#123;</span></span><br><span class="line"><span class="undefined">        background: #9BCD9B;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">      li:nth-child(3) &#123;</span></span><br><span class="line"><span class="undefined">        background: yellow;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">      button &#123;</span></span><br><span class="line"><span class="undefined">        width: 100px;</span></span><br><span class="line"><span class="undefined">        height: 50px;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">      .button &#123;</span></span><br><span class="line"><span class="undefined">        position: absolute;</span></span><br><span class="line"><span class="undefined">        bottom: 0;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'content'</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">'content-wrap'</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 第一副画面 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span> 页面1 <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 第二副画面 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span> 页面2 <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 第三副画面 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span> 页面3 <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"button"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span>&gt;</span>点击切换页面<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="comment">// 获取第一个子节点</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> container = <span class="built_in">document</span>.getElementById(<span class="string">'content'</span>);</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 获取ul</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> element = container.getElementsByClassName(<span class="string">'content-wrap'</span>);</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 获取li</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> slides = element[<span class="number">0</span>].getElementsByTagName(<span class="string">"li"</span>);</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 获取容器尺寸 offset属性，获取自身的宽高</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> width = container.offsetWidth;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> height = container.offsetHeight;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 设置ul总宽度</span></span></span><br><span class="line"><span class="javascript">      element[<span class="number">0</span>].style.width = (width * slides.length) + <span class="string">'px'</span>;</span></span><br><span class="line"><span class="javascript">      element[<span class="number">0</span>].style.height = height + <span class="string">'px'</span>;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 设置每一个li的尺寸</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; slides.length; i++) &#123;</span></span><br><span class="line"><span class="javascript">        slides[i].style.height = height + <span class="string">'px'</span>;</span></span><br><span class="line"><span class="javascript">        slides[i].style.width = width + <span class="string">'px'</span>;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> button = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'button'</span>);</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 绑定一个事件，触发通过</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> timer = <span class="literal">null</span>;</span></span><br><span class="line"><span class="javascript">      button[<span class="number">0</span>].addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 在5秒的时间内，移动X的位置，为2个页面单位</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">// css3实现</span></span></span><br><span class="line"><span class="javascript">        element[<span class="number">0</span>].style.transition = <span class="string">'all 5000ms linear'</span>;</span></span><br><span class="line"><span class="javascript">        element[<span class="number">0</span>].style.transform = <span class="string">'translatex(-'</span> + width * <span class="number">2</span> + <span class="string">'px)'</span>;</span></span><br><span class="line"><span class="javascript">      	<span class="comment">// js+定时器实现  </span></span></span><br><span class="line"><span class="javascript">        <span class="comment">// var num = 0 ;</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">// timer = setInterval(function () &#123;</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//   num = num + 5;</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//   if (num &lt; width * 2) &#123;</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//     element[0].style.left = -num + 'px';</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//   &#125;</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//   else &#123;</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//     clearInterval(timer);</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//     timer = null;</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//   &#125;</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">// &#125;, 10)</span></span></span><br><span class="line"><span class="undefined">       &#125;)</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    柴旭红
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.chaixuhong.com/article/imooc2-2.html" title="七夕项目js实现-2-2">http://www.chaixuhong.com/article/imooc2-2.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/imooc/" rel="tag"># imooc</a>
+          
+            <a href="/tags/七夕言情/" rel="tag"># 七夕言情</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/article/imooc2-1.html" rel="next" title="七夕项目js实现-2-1">
+                <i class="fa fa-chevron-left"></i> 七夕项目js实现-2-1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/article/imooc2-3.html" rel="prev" title="七夕项目js实现-2-3">
+                七夕项目js实现-2-3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/touxiang.jpg"
+               alt="柴旭红" />
+          <p class="site-author-name" itemprop="name">柴旭红</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              推荐阅读
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.icafebolger.com/" title="爱咖啡" target="_blank">爱咖啡</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.80iter.com/" title="80iter" target="_blank">80iter</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ruanyifeng.com/blog/" title="阮一峰" target="_blank">阮一峰</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2-2页面之间的卷滚切换效果"><span class="nav-number">1.</span> <span class="nav-text">2-2页面之间的卷滚切换效果</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#撸代码"><span class="nav-number">1.2.</span> <span class="nav-text">撸代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结束语"><span class="nav-number">1.3.</span> <span class="nav-text">结束语</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  <span class="author" itemprop="copyrightHolder">柴旭红</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  
+  <span itemprop="copyrightYear">2018</span>
+  &copy; 京ICP备17035556号-1  2017 - 
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytadSTJb';
+      var conf = 'prod_bb0ce13a3d85348654e61346d4eab537';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("g4Jwd29BBXOqQdqfOLu0at8p-gzGzoHsz", "2S5j3Il4eN7SQSEJTQf4rCIN");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

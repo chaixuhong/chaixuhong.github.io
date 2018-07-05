@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>书写青春</title>
+  
+  <subtitle>生活点滴</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.chaixuhong.com/"/>
+  <updated>2018-04-02T07:00:19.000Z</updated>
+  <id>http://www.chaixuhong.com/</id>
+  
+  <author>
+    <name>柴旭红</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux下nodejs安装oracle驱动</title>
+    <link href="http://www.chaixuhong.com/article/node-oracledb%E5%AE%89%E8%A3%85.html"/>
+    <id>http://www.chaixuhong.com/article/node-oracledb安装.html</id>
+    <published>2018-03-13T16:00:00.000Z</published>
+    <updated>2018-04-02T07:00:19.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;用Nodejs连接oracle是比较麻烦的，不像使用mysql，Mogondb，redis等有相当丰富的库。就连官方提供的&lt;a href=&quot;http://www.oracle.com/technetwork/database/database-technologies/scripting-languages/node_js/node-oracledb-doc-4241690.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;oracledb&lt;/a&gt;也在linux上安装的时候屡屡失败。&lt;/p&gt;
+&lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Nodejs v8.3.0  —&amp;gt; &lt;a href=&quot;https://npm.taobao.org/mirrors/node/v8.3.0/node-v8.3.0-linux-x64.tar.xz&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载地址node-v8.3.0-linux-x64.tar.xz&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;为什么指定8.3.0版本呢，经过多个版本Node在多个版本的linux上进行的多次测试，得出结论，8.3.0版本在安装oracledb的成功率最高，基本都能一次成功。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在oracle官网下载两个文件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;instantclient-basic-linux.x64-12.2.0.1.0.zip&lt;/li&gt;
+&lt;li&gt;instantclient-sdk-linux.x64-12.2.0.1.0.zip&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;oracle官网下载地址&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;检查gcc版本&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;/span&gt; gcc --version&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果版本低于4.7，则需要升级。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://www.chaixuhong.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="Node" scheme="http://www.chaixuhong.com/tags/Node/"/>
+    
+      <category term="Oracle" scheme="http://www.chaixuhong.com/tags/Oracle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解决移动端boder边框1px渲染成2px的问题</title>
+    <link href="http://www.chaixuhong.com/article/%E7%A7%BB%E5%8A%A8%E7%AB%AF1px%E8%BE%B9%E6%A1%86%E9%97%AE%E9%A2%98.html"/>
+    <id>http://www.chaixuhong.com/article/移动端1px边框问题.html</id>
+    <published>2018-02-28T16:00:00.000Z</published>
+    <updated>2018-03-02T02:46:21.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;meta-&amp;gt;viewport&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://www.chaixuhong.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Html" scheme="http://www.chaixuhong.com/tags/Html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>原型链</title>
+    <link href="http://www.chaixuhong.com/article/%E5%8E%9F%E5%9E%8B%E9%93%BE.html"/>
+    <id>http://www.chaixuhong.com/article/原型链.html</id>
+    <published>2018-02-27T16:00:00.000Z</published>
+    <updated>2018-02-28T07:39:24.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="前端" scheme="http://www.chaixuhong.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Javascript" scheme="http://www.chaixuhong.com/tags/Javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>闭包是什么？密室逃脱，哇擦！有人在马桶下偷窥！</title>
+    <link href="http://www.chaixuhong.com/article/%E4%BB%80%E4%B9%88%E6%98%AF%E9%97%AD%E5%8C%85.html"/>
+    <id>http://www.chaixuhong.com/article/什么是闭包.html</id>
+    <published>2018-01-29T16:00:00.000Z</published>
+    <updated>2018-02-28T07:34:58.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天我想有别于其他作者，以密室逃脱主题来聊聊闭包这个鬼东西，made！当初就是他卡住了我进阿里的路，面试官嫌我技术深度不够，理解不透彻！功夫不负有心人！用了两天时间，本大神终于把这个&lt;strong&gt;闭包&lt;/strong&gt;搞的，一塌糊涂了。。。额！&lt;br&gt;来，来，来！观众老爷们，跟我到小黑屋里聊聊，我们从&lt;strong&gt;变量&lt;/strong&gt;-&amp;gt;&lt;strong&gt;作用域&lt;/strong&gt;-&amp;gt;&lt;strong&gt;闭包&lt;/strong&gt;这个姿势搞下，看本大神实力把观众老爷们，将这个闭包问题，说的彻彻底底，彻底迷糊了~_~!&lt;/p&gt;
+&lt;h3 id=&quot;变量&quot;&gt;&lt;a href=&quot;#变量&quot; class=&quot;headerlink&quot; title=&quot;变量&quot;&gt;&lt;/a&gt;变量&lt;/h3&gt;&lt;p&gt;在js中，变量就分为两种：全局变量和局部变量&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;全局变量：在全局起作用的变量，&lt;strong&gt;作用域&lt;/strong&gt;为全局&lt;/li&gt;
+&lt;li&gt;局部变量：在局部起作用的变量，&lt;strong&gt;作用域&lt;/strong&gt;为局部&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;那么在js中，如何区别两者呢？js中，只有一种方法来声明局部变量，就是在方法体中，function里面；js没有java或c中的块级作用域的概念。简单说就是，&lt;strong&gt;在function里面的就是局部变量，在外面的就是全局变量&lt;/strong&gt;。可以把function想象成电影里面那种密室，从里面可以看到外面，从外面看墙是镜子，只能看到自己。但在里面，既能知道里面有啥，还知道外面有啥。&lt;/p&gt;
+&lt;p&gt;其实还有一种特殊情况，局部变量中的局部变量，就是function嵌套；密室套密室，外层密室看内层密室，同样墙是面镜子，只能看到自己。&lt;/p&gt;
+&lt;p&gt;在ES6之前，&lt;strong&gt;只有&lt;/strong&gt;函数能产生局部变量，函数就是小密室，它能把内部的东西隐藏起来，不被外部访问到；所以，在函数内部就是局部变量，在外部就是全局变量。ES6之后增加了像java一样的块级作用域，这在之前是没有的，有兴趣的可以去了解下。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;test&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(a); &lt;span class=&quot;comment&quot;&gt;//Uncaught ReferenceError: a is not defined&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;	a被声明在函数中，所以它是局部变量，在外部访问会报&quot;ReferenceError&quot;错误&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;围绕&lt;strong&gt;变量&lt;/strong&gt;就出现了作用域，作用域链两个东西&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://www.chaixuhong.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Javascript" scheme="http://www.chaixuhong.com/tags/Javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>七夕项目js实现-3-3</title>
+    <link href="http://www.chaixuhong.com/article/imooc3-3.html"/>
+    <id>http://www.chaixuhong.com/article/imooc3-3.html</id>
+    <published>2017-08-25T16:00:00.000Z</published>
+    <updated>2017-09-03T14:46:46.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;3-3走路的实现&quot;&gt;&lt;a href=&quot;#3-3走路的实现&quot; class=&quot;headerlink&quot; title=&quot;3-3走路的实现&quot;&gt;&lt;/a&gt;3-3走路的实现&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这节课很简单，是旧知识的温习，没新内容。与第二节【2-2页面之间的卷滚切换效果】中的实现一样，2-2中是让背景动起来，本节是让人物动起来，道理是一样的。我只贴出css3的实现，js实现请回看2-2。我可以把思想说下，就是利用定时器循环调用js方法，去改变boy这个div 的&lt;code&gt;left&lt;/code&gt;值。&lt;br&gt;&lt;em&gt;注：每节课的代码都是copy上一节的代码基础上改的，看不懂请回退。&lt;/em&gt;&lt;br&gt;所有章节，与慕课上的章节一一对应。慕课地址：&lt;a href=&quot;http://www.imooc.com/learn/453&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;传送门&lt;/a&gt; 走你！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://www.chaixuhong.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="imooc" scheme="http://www.chaixuhong.com/tags/imooc/"/>
+    
+      <category term="七夕言情" scheme="http://www.chaixuhong.com/tags/%E4%B8%83%E5%A4%95%E8%A8%80%E6%83%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>七夕项目js实现-3-2</title>
+    <link href="http://www.chaixuhong.com/article/imooc3-2.html"/>
+    <id>http://www.chaixuhong.com/article/imooc3-2.html</id>
+    <published>2017-08-24T16:00:00.000Z</published>
+    <updated>2017-09-03T14:44:51.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;3-2精灵动画的实现&quot;&gt;&lt;a href=&quot;#3-2精灵动画的实现&quot; class=&quot;headerlink&quot; title=&quot;3-2精灵动画的实现&quot;&gt;&lt;/a&gt;3-2精灵动画的实现&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;本节课重点难点是css3部分，其实说难，是相对的，对比无脑的写个&lt;code&gt;&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;&lt;/code&gt;标签要难些。明白css3 &lt;code&gt;animation&lt;/code&gt;用法也就很简单了。置于雪碧图原理没什么，就是把一堆小图放在合成在一张图片上，减少http请求数，做前端性能优化用。然后主要通过&lt;code&gt;background-repeatbackground-position&lt;/code&gt;定位你要显示那一块小图。&lt;br&gt;注：每节课的代码都是copy上一节的代码基础上改的，看不懂请回退。&lt;br&gt;所有章节，与慕课上的章节一一对应。慕课地址：&lt;a href=&quot;http://www.imooc.com/learn/453&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;传送门&lt;/a&gt; 走你！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://www.chaixuhong.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="imooc" scheme="http://www.chaixuhong.com/tags/imooc/"/>
+    
+      <category term="七夕言情" scheme="http://www.chaixuhong.com/tags/%E4%B8%83%E5%A4%95%E8%A8%80%E6%83%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>七夕项目js实现-3-1</title>
+    <link href="http://www.chaixuhong.com/article/imooc3-1.html"/>
+    <id>http://www.chaixuhong.com/article/imooc3-1.html</id>
+    <published>2017-08-23T16:00:00.000Z</published>
+    <updated>2017-09-03T14:44:23.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;3-1布局的自适应动态调整&quot;&gt;&lt;a href=&quot;#3-1布局的自适应动态调整&quot; class=&quot;headerlink&quot; title=&quot;3-1布局的自适应动态调整&quot;&gt;&lt;/a&gt;3-1布局的自适应动态调整&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;​    本节他主要想实现的效果是，不管你的浏览器窗口有多大，都能将小男孩定位到路的中间。就像他写的那个公式，小男孩头顶距离窗口顶部的距离+小男孩的身高=小男孩脚底板距离窗口顶部的距离(也就是路中间的点top值)，即小男孩的top值 + 小男孩的自身height = 小男孩应该站的位置坐标。&lt;br&gt;      有视频的课大家直接看视频，我直接对着没视频的课代码撸起！&lt;br&gt;​    请注意章节，与慕课上的章节一一对应。慕课地址：&lt;a href=&quot;http://www.imooc.com/learn/453&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;传送门&lt;/a&gt; 走你！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://www.chaixuhong.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="imooc" scheme="http://www.chaixuhong.com/tags/imooc/"/>
+    
+      <category term="七夕言情" scheme="http://www.chaixuhong.com/tags/%E4%B8%83%E5%A4%95%E8%A8%80%E6%83%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>七夕项目js实现-2-3</title>
+    <link href="http://www.chaixuhong.com/article/imooc2-3.html"/>
+    <id>http://www.chaixuhong.com/article/imooc2-3.html</id>
+    <published>2017-08-22T16:00:00.000Z</published>
+    <updated>2017-09-03T14:42:01.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;2-3页面切换部分的代码封装&quot;&gt;&lt;a href=&quot;#2-3页面切换部分的代码封装&quot; class=&quot;headerlink&quot; title=&quot;2-3页面切换部分的代码封装&quot;&gt;&lt;/a&gt;2-3页面切换部分的代码封装&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;​    本节没有继续进行主剧情，主要是对代码进行整理，封装是为了后面开发能简化、复用。所以这节也是很有必要的。也用到一些闭包的知识，闭包的主要优点，是隔离的作用域。你在方法里定义的变量不会污染全局变量。这个如果暂时理解不了，先往下进行，慢慢的就会有体会了。&lt;br&gt;      有视频的课大家直接看视频，我直接对着没视频的课代码撸起！&lt;br&gt;​    请注意章节，与慕课上的章节一一对应。慕课地址：&lt;a href=&quot;http://www.imooc.com/learn/453&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;传送门&lt;/a&gt; 走你！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://www.chaixuhong.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="imooc" scheme="http://www.chaixuhong.com/tags/imooc/"/>
+    
+      <category term="七夕言情" scheme="http://www.chaixuhong.com/tags/%E4%B8%83%E5%A4%95%E8%A8%80%E6%83%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>七夕项目js实现-2-2</title>
+    <link href="http://www.chaixuhong.com/article/imooc2-2.html"/>
+    <id>http://www.chaixuhong.com/article/imooc2-2.html</id>
+    <published>2017-08-21T16:00:00.000Z</published>
+    <updated>2017-09-03T14:41:51.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;2-2页面之间的卷滚切换效果&quot;&gt;&lt;a href=&quot;#2-2页面之间的卷滚切换效果&quot; class=&quot;headerlink&quot; title=&quot;2-2页面之间的卷滚切换效果&quot;&gt;&lt;/a&gt;2-2页面之间的卷滚切换效果&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;​    本节主要用到了css3的一个过渡属性，做本节之前可以上w3c去看下css3的transform用法，其实也没什么高深的东西。&lt;br&gt;​    有视频的课大家直接看视频，我直接对着没视频的课代码撸起！&lt;br&gt;​    请注意章节，与慕课上的章节一一对应。慕课地址：&lt;a href=&quot;http://www.imooc.com/learn/453&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;传送门&lt;/a&gt; 走你！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://www.chaixuhong.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="imooc" scheme="http://www.chaixuhong.com/tags/imooc/"/>
+    
+      <category term="七夕言情" scheme="http://www.chaixuhong.com/tags/%E4%B8%83%E5%A4%95%E8%A8%80%E6%83%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>七夕项目js实现-2-1</title>
+    <link href="http://www.chaixuhong.com/article/imooc2-1.html"/>
+    <id>http://www.chaixuhong.com/article/imooc2-1.html</id>
+    <published>2017-08-20T16:00:00.000Z</published>
+    <updated>2017-09-03T14:41:04.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;2-1页面的横向布局&quot;&gt;&lt;a href=&quot;#2-1页面的横向布局&quot; class=&quot;headerlink&quot; title=&quot;2-1页面的横向布局&quot;&gt;&lt;/a&gt;2-1页面的横向布局&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;​    对imooc上一个关于html5+css3 的课程《七夕言情》进行纯原生js改版，没有别的额外意思，只是想在实现这一课程时，使用别的实现方式会加深印象。我会在一些点上增加些代码解析，有助于新手理解。&lt;br&gt;​    对于没学过jquery的童鞋来说，可能值得一探究竟的。&lt;br&gt;​    有视频的课大家直接看视频，我直接对着没视频的课代码撸起！&lt;br&gt;​    请注意章节，与慕课上的章节一一对应。慕课地址：&lt;a href=&quot;http://www.imooc.com/learn/453&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;传送门&lt;/a&gt; 走你！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://www.chaixuhong.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="imooc" scheme="http://www.chaixuhong.com/tags/imooc/"/>
+    
+      <category term="七夕言情" scheme="http://www.chaixuhong.com/tags/%E4%B8%83%E5%A4%95%E8%A8%80%E6%83%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NEXT主题中使用畅言的坑</title>
+    <link href="http://www.chaixuhong.com/article/NEXT%E4%BD%BF%E7%94%A8%E7%95%85%E8%A8%80%E7%9A%84%E9%97%AE%E9%A2%98.html"/>
+    <id>http://www.chaixuhong.com/article/NEXT使用畅言的问题.html</id>
+    <published>2017-08-14T16:00:00.000Z</published>
+    <updated>2017-08-17T14:55:04.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;NEXT主题中使用畅言的坑&quot;&gt;&lt;a href=&quot;#NEXT主题中使用畅言的坑&quot; class=&quot;headerlink&quot; title=&quot;NEXT主题中使用畅言的坑&quot;&gt;&lt;/a&gt;NEXT主题中使用畅言的坑&lt;/h1&gt;&lt;p&gt;适用NEXT版本：从NEXT封装畅言的版本到5.1.2版本&lt;/p&gt;
+&lt;h2 id=&quot;踩坑环节&quot;&gt;&lt;a href=&quot;#踩坑环节&quot; class=&quot;headerlink&quot; title=&quot;踩坑环节&quot;&gt;&lt;/a&gt;踩坑环节&lt;/h2&gt;&lt;p&gt;目前在使用中遇到如下几个坑：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;添加了分类页、归档页、标签页后，当在浏览器打开控制台后进入上述页面，就会报错，而且是1秒报一次，无限报下去。当然，不影响使用，但是有丝毫强迫症的人，绝对受不了。老子曰(我爹说)：“癞蛤蟆蹦脚面上，不咬人，膈应人。”&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://www.chaixuhong.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Hexo" scheme="http://www.chaixuhong.com/tags/Hexo/"/>
+    
+      <category term="Next" scheme="http://www.chaixuhong.com/tags/Next/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx设置301重定向与域名解析</title>
+    <link href="http://www.chaixuhong.com/article/nginx%E8%AE%BE%E7%BD%AE301%E9%87%8D%E5%AE%9A%E5%90%91%E4%B8%8E%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90.html"/>
+    <id>http://www.chaixuhong.com/article/nginx设置301重定向与域名解析.html</id>
+    <published>2017-06-27T16:00:00.000Z</published>
+    <updated>2017-08-15T15:06:40.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;nginx设置301重定向与域名解析&quot;&gt;&lt;a href=&quot;#nginx设置301重定向与域名解析&quot; class=&quot;headerlink&quot; title=&quot;nginx设置301重定向与域名解析&quot;&gt;&lt;/a&gt;nginx设置301重定向与域名解析&lt;/h1&gt;&lt;h2 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot; title=&quot;目的&quot;&gt;&lt;/a&gt;目的&lt;/h2&gt;&lt;p&gt;为了实现访问&lt;code&gt;www.exemple.com&lt;/code&gt;与&lt;code&gt;exemple.com&lt;/code&gt;时，无论从表面上还是实质上都进入的是一个站。&lt;/p&gt;
+&lt;h2 id=&quot;作用&quot;&gt;&lt;a href=&quot;#作用&quot; class=&quot;headerlink&quot; title=&quot;作用&quot;&gt;&lt;/a&gt;作用&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;有利于SEO（排名和收录）&lt;/li&gt;
+&lt;li&gt;若你的站使用第三方组件，如畅言评论，那么会出现&lt;code&gt;www.exemple.com&lt;/code&gt;与&lt;code&gt;exemple.com&lt;/code&gt;被畅言认为是两个网站&lt;/li&gt;
+&lt;li&gt;方便用户的浏览器区分访问历史&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;已备案的域名：exemple.com&lt;/li&gt;
+&lt;li&gt;服务器ip：111.22.33.44&lt;/li&gt;
+&lt;li&gt;已在服务器安装nignx ，如未安装请移步—&amp;gt; &lt;a href=&quot;http://www.chaixuhong.com/20170621linux%E4%B8%8B%E5%AE%89%E8%A3%85nginx.html&quot;&gt;linux安装nignx&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://www.chaixuhong.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="nginx" scheme="http://www.chaixuhong.com/tags/nginx/"/>
+    
+      <category term="域名解析" scheme="http://www.chaixuhong.com/tags/%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux安装svn服务端</title>
+    <link href="http://www.chaixuhong.com/article/linux%E5%AE%89%E8%A3%85svn%E6%9C%8D%E5%8A%A1%E7%AB%AF.html"/>
+    <id>http://www.chaixuhong.com/article/linux安装svn服务端.html</id>
+    <published>2017-06-21T16:00:00.000Z</published>
+    <updated>2017-08-15T09:11:12.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;linux安装svn服务端&quot;&gt;&lt;a href=&quot;#linux安装svn服务端&quot; class=&quot;headerlink&quot; title=&quot;linux安装svn服务端&quot;&gt;&lt;/a&gt;linux安装svn服务端&lt;/h1&gt;&lt;h2 id=&quot;使用yum安装svn&quot;&gt;&lt;a href=&quot;#使用yum安装svn&quot; class=&quot;headerlink&quot; title=&quot;使用yum安装svn&quot;&gt;&lt;/a&gt;使用yum安装svn&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;安装&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install subversion -y&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;​    -y ：自动应答为‘yes’  ，省的老询问，让你输入‘yes or no’。&lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;安装完成后，输入命令：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;svn --version&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;打印出版本号，说明安装成功。好，第一步已迈出，go on！&lt;/p&gt;
+&lt;h2 id=&quot;建立svn项目仓库&quot;&gt;&lt;a href=&quot;#建立svn项目仓库&quot; class=&quot;headerlink&quot; title=&quot;建立svn项目仓库&quot;&gt;&lt;/a&gt;建立svn项目仓库&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;开始创建仓库&lt;/p&gt;
+&lt;p&gt;首先说明下，最好先创建一个存放svn仓库的文件夹，然后一个项目建一个仓库。那么按照这个思路开始：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;先创建一个svn仓库根的文件夹&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mkdir /data/svnCangKu&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;注：mkdir命令是创建文件夹命令，后面是要创建的路径与文件夹名称，我这里创建了/data/下的名为“svnCangku”文件夹。为了方便理解，我就用比较low的拼音命名了，你们可以命名的高大上一点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;创建仓库&lt;/p&gt;
+&lt;p&gt;比如你现在有一个项目taobao，一个项目jingdong。那么要为两个项目创建各自的svn仓库。&lt;/p&gt;
+&lt;p&gt;项目&lt;strong&gt;taobao&lt;/strong&gt;仓库创建:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;svnadmin create /data/svnCangKu/taobao&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;项目&lt;strong&gt;jingdong&lt;/strong&gt;仓库创建:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;svnadmin create /data/svnCangKu/jingdong&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;两个仓库创建完毕，开始配置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://www.chaixuhong.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="svn" scheme="http://www.chaixuhong.com/tags/svn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux下安装nginx</title>
+    <link href="http://www.chaixuhong.com/article/linux%E4%B8%8B%E5%AE%89%E8%A3%85nginx.html"/>
+    <id>http://www.chaixuhong.com/article/linux下安装nginx.html</id>
+    <published>2017-06-20T16:00:00.000Z</published>
+    <updated>2017-08-14T15:10:10.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;linux下安装nginx&quot;&gt;&lt;a href=&quot;#linux下安装nginx&quot; class=&quot;headerlink&quot; title=&quot;linux下安装nginx&quot;&gt;&lt;/a&gt;linux下安装nginx&lt;/h1&gt;&lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;安装编译工具及库文件&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;创建一个文件夹&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mkdir /data/nginx&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装 PCRE&lt;/p&gt;
+&lt;p&gt;PCRE 作用是让 Nginx 支持 Rewrite 功能。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;进入到文件夹&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd /data/nginx&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;下载 PCRE 安装包&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wget  https://sourceforge.net/projects/pcre/files/pcre/8.40/pcre-8.40.tar.gz&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;解压&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;tar zxvf pcre-8.40.tar.gz&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;进入解压后到文件夹&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd pcre-8.40&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;编译安装&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;./configure&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;make &amp;amp;&amp;amp; make install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;完成后查看版本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;./pcre-config --version&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;打印出8.40，确认安装成功&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://www.chaixuhong.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="nginx" scheme="http://www.chaixuhong.com/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javacript容易遗漏，也容易被面试官为难的点</title>
+    <link href="http://www.chaixuhong.com/article/javacript%E5%AD%A6%E4%B9%A0%E6%95%A3%E8%AE%B0.html"/>
+    <id>http://www.chaixuhong.com/article/javacript学习散记.html</id>
+    <published>2017-05-20T16:00:00.000Z</published>
+    <updated>2017-08-11T07:27:42.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!--
+# 历史
+
++ 99年，ie5部署了XMLHttpRequest接口，从此javascript可以向服务器发送http请求，为ajax的诞生奠定了基础。
++ 2001年，Json格式诞生，目的是取代XML进行网页与服务器中间的数据交换。
++ 02年，Mozilla项目发布浏览器的第一版，之后改名为Firefox。
++ 03年，Safari浏览器诞生。
++ 05年，ajax（asynchronous javascript and XML）诞生，web2.0时代来临。
++ 06年，jQuery诞生。
++ 08年，V8编译器诞生。很大程度的提升了javascript的运行速度和性能。
++ 09年，NodeJs诞生。标志着javascript可以用于服务器端编程。
++ 2010年，npm诞生，javascript进入模块化开发的时代。
++ 12年，单页应用崛起，AngularJs出现。
++ 13年，Facebook发布了React，引入JSX语法。
++ 15年6月，ES6正式发布，定名为“ECMAScript 2015 标准”，JS诞生20年。
++ 2016年6月，《ECMAScript 2016 标准》发布
+--&gt;
+&lt;h1 id=&quot;语法类&quot;&gt;&lt;a href=&quot;#语法类&quot; class=&quot;headerlink&quot; title=&quot;语法类&quot;&gt;&lt;/a&gt;语法类&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;用“var”声明的变量，会出现“变量提升”的现象。javascript引擎的工作方式，先解析代码，获取所有声明的变量，然后再一行行运行，所有声明的语句都会被提升到代码的头部。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/js学习散记/base/01.png&quot; style=&quot;width:50%;&quot;&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; b=&lt;span class=&quot;string&quot;&gt;&quot;hi!&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//运行后不会报错，打印出 &quot;undefined&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;其实运行时是这样的：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; b;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b=&lt;span class=&quot;string&quot;&gt;&quot;hi!&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;由于变量提升导致的，如果不用“var”的方式声明，则不会出现，且上诉编写的代码无法运行，会报错。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://www.chaixuhong.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Javascript" scheme="http://www.chaixuhong.com/tags/Javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gulp.js--好用的静态文件打包工具</title>
+    <link href="http://www.chaixuhong.com/article/gulp.js--%E5%A5%BD%E7%94%A8%E7%9A%84%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7.html"/>
+    <id>http://www.chaixuhong.com/article/gulp.js--好用的静态文件打包工具.html</id>
+    <published>2017-05-19T16:00:00.000Z</published>
+    <updated>2017-08-11T08:25:10.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;一句话概括gulp&quot;&gt;&lt;a href=&quot;#一句话概括gulp&quot; class=&quot;headerlink&quot; title=&quot;一句话概括gulp&quot;&gt;&lt;/a&gt;一句话概括gulp&lt;/h2&gt;&lt;p&gt;​    gulp是前端开发过程中，一种基于&lt;strong&gt;流&lt;/strong&gt;的代码构建工具。是自动化构建项目的利器。&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;安装前提是已经安装了NodeJs环境&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#	npm install -g gulp&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;全局装完后，需在要使用gulp的项目的根路径中，再单独装一次&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#	npm install gulp&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果想在安装的时候把gulp写进项目package.json文件的依赖中，则可以加上–save   &lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#	npm install gulp -save&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://www.chaixuhong.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Gulp" scheme="http://www.chaixuhong.com/tags/Gulp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Http请求头，响应头，错误码解析</title>
+    <link href="http://www.chaixuhong.com/article/http%E8%A7%A3%E6%9E%90.html"/>
+    <id>http://www.chaixuhong.com/article/http解析.html</id>
+    <published>2017-04-24T16:00:00.000Z</published>
+    <updated>2017-08-11T07:29:25.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;HTTP解析：&lt;/p&gt;
+&lt;p&gt;1.常见的HTTP请求头&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;请求头&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;nobr&gt;Accept-charset&lt;/nobr&gt;&lt;/td&gt;
+&lt;td&gt;用于指定客户端接受的字符集&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;nobr&gt;Accept-Encoding&lt;/nobr&gt;&lt;/td&gt;
+&lt;td&gt;用于指定可接受的内容编码。如：Accept-Encoding：gzip，deflate&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;nobr&gt;Accept-Language&lt;/nobr&gt;&lt;/td&gt;
+&lt;td&gt;用于指定一种自然语言。如：Accept-Language：zh-CN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;nobr&gt;Host&lt;/nobr&gt;&lt;/td&gt;
+&lt;td&gt;用于指定被请求资源的Internet主机和端口号。如：Host：&lt;a href=&quot;http://www.taobao.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;www.taobao.com&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;nobr&gt;User-Agent&lt;/nobr&gt;&lt;/td&gt;
+&lt;td&gt;客户端将它的操作系统、浏览器和其他属性告诉服务器。 如：User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;nobr&gt;Connection&lt;/nobr&gt;&lt;/td&gt;
+&lt;td&gt;当前连接是否保持。如：Connection：Keep-Alive&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="网络协议" scheme="http://www.chaixuhong.com/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
+    
+    
+      <category term="http" scheme="http://www.chaixuhong.com/tags/http/"/>
+    
+  </entry>
+  
+</feed>
