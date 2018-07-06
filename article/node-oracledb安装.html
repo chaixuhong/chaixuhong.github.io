@@ -78,7 +78,7 @@
 <meta property="og:site_name" content="书写青春">
 <meta property="og:description" content="问题用Nodejs连接oracle是比较麻烦的，不像使用mysql，Mogondb，redis等有相当丰富的库。就连官方提供的oracledb也在linux上安装的时候屡屡失败。 准备工作 Nodejs v8.3.0  —&amp;gt; 下载地址node-v8.3.0-linux-x64.tar.xz 为什么指定8.3.0版本呢，经过多个版本Node在多个版本的linux上进行的多次测试，得出结论，8.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-02T07:00:19.000Z">
+<meta property="og:updated_time" content="2018-07-06T06:13:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux下nodejs安装oracle驱动">
 <meta name="twitter:description" content="问题用Nodejs连接oracle是比较麻烦的，不像使用mysql，Mogondb，redis等有相当丰富的库。就连官方提供的oracledb也在linux上安装的时候屡屡失败。 准备工作 Nodejs v8.3.0  —&amp;gt; 下载地址node-v8.3.0-linux-x64.tar.xz 为什么指定8.3.0版本呢，经过多个版本Node在多个版本的linux上进行的多次测试，得出结论，8.">
@@ -392,7 +392,10 @@
 </li>
 </ol>
 <a id="more"></a>
-<h2 id="升级gcc版本"><a href="#升级gcc版本" class="headerlink" title="升级gcc版本"></a>升级gcc版本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> wget http://people.centos.org/tru/devtools-2/devtools-2.repo</span><br><span class="line"><span class="meta">#</span> mv devtools-2.repo /etc/yum.repos.d</span><br><span class="line"><span class="meta">#</span> yum install devtoolset-2-gcc devtoolset-2-binutils devtoolset-2-gcc-c++</span><br></pre></td></tr></table></figure>
+<h2 id="升级gcc版本"><a href="#升级gcc版本" class="headerlink" title="升级gcc版本"></a>升级gcc版本</h2><ol>
+<li>升级方案一：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> wget http://people.centos.org/tru/devtools-2/devtools-2.repo</span><br><span class="line"><span class="meta">#</span> mv devtools-2.repo /etc/yum.repos.d</span><br><span class="line"><span class="meta">#</span> yum install devtoolset-2-gcc devtoolset-2-binutils devtoolset-2-gcc-c++</span><br></pre></td></tr></table></figure>
 <p>更新软连接(逐条执行如下命令)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mv /usr/bin/gcc /usr/bin/gcc-4.4.7</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mv /usr/bin/g++ /usr/bin/g++-4.4.7</span><br></pre></td></tr></table></figure>
@@ -401,6 +404,18 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> ln -s /opt/rh/devtoolset-2/root/usr/bin/c++ /usr/bin/c++</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> ln -s /opt/rh/devtoolset-2/root/usr/bin/g++ /usr/bin/g++</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> gcc --version</span><br></pre></td></tr></table></figure>
+<p>成功打印版本号，则安装成功。</p>
+<ol start="2">
+<li>升级方案二：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> touch /etc/yum.repos.d/devtools-2.repo</span><br></pre></td></tr></table></figure>
+<p>在devtools-2.repo文件中填入以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[devtools2]</span><br><span class="line">name=testing 2 devtools for CentOS $releasever </span><br><span class="line">baseurl=http://people.centos.org/tru/devtools-2/$releasever/$basearch/RPMS</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line"></span><br><span class="line">备用的升级源</span><br><span class="line"></span><br><span class="line">[devtoolset2]</span><br><span class="line">name=RedHat DevToolset v2 $releasever - $basearch</span><br><span class="line">baseurl=http://puias.princeton.edu/data/puias/DevToolset/$releasever/$basearch/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br></pre></td></tr></table></figure>
+<p>执行命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> yum check-update</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> yum install devtoolset-2-gcc  devtoolset-2-gcc-c++</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> source /opt/rh/devtoolset-2/enable</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> gcc -v</span><br></pre></td></tr></table></figure>
 <p>成功打印版本号，则安装成功。</p>
 <h2 id="安装Node"><a href="#安装Node" class="headerlink" title="安装Node"></a>安装Node</h2><ol>
 <li><p>创建文件夹</p>
